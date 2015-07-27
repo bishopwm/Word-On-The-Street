@@ -1,0 +1,2 @@
+module YelpResultHelper
+end
