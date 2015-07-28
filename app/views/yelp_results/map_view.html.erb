@@ -2,25 +2,32 @@
 <div id="map"></div>
 
 <script type="text/javascript">
-$(function () {
-	document.addEventListener("LocationLoaded", function() {
-	  addTo(map);
-	});
-	
-	var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 13);
-	var currentLocation = [<%= @latitude %>, <%= @longitude %>];
+
+	$(function () {
+		document.addEventListener("LocationLoaded", function() {
+		  addTo(map);
+		});
+		
+		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 13);
+		var currentLocation = [<%= @latitude %>, <%= @longitude %>];
 
 
-	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-	    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-	    maxZoom: 18,
-	    id: 'wbishop231.n15g88p3',
-	    accessToken: 'pk.eyJ1Ijoid2Jpc2hvcDIzMSIsImEiOiJlNjdmZWQ5NWMwMjdmOTNiNjJiZTY0ZTdmZTVlOWY0OSJ9.11weNx-x_-nmTstxP9Kq6g'
-	}).addTo(map);	
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		    maxZoom: 18,
+		    id: 'wbishop231.n15g88p3',
+		    accessToken: 'pk.eyJ1Ijoid2Jpc2hvcDIzMSIsImEiOiJlNjdmZWQ5NWMwMjdmOTNiNjJiZTY0ZTdmZTVlOWY0OSJ9.11weNx-x_-nmTstxP9Kq6g'
+		}).addTo(map);	
 
-	var marker = L.marker(currentLocation).addTo(map);
-	var marker2 = L.marker(<%=@results%>).addTo(map);
+		var marker = L.marker(currentLocation).addTo(map);
 
-})
+		var popupContent =  '<h3><%=escape_javascript @results[0] %></h3><p><%=escape_javascript @results[1] %></p><p><%=escape_javascript @results[2] %></p>'
+
+						
+
+		var marker2 = L.marker(<%= @results[3]%>).addTo(map);
+		marker2.bindPopup(popupContent);
+
+	})
 
 </script>

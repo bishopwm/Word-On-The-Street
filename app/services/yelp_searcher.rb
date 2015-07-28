@@ -7,13 +7,10 @@ class YelpSearcher
 		business_latitude = yelp_search.businesses[2].location.coordinate.latitude
 		business_longitude = yelp_search.businesses[2].location.coordinate.longitude
 		business_coordinates = [business_latitude, business_longitude]
-
+		address = yelp_search.businesses[2].location.address[0]
+		[name, category, address, business_coordinates]
 	end
 
-	# def sort_results
-	# 	@search_results.each do |result|
-	# 		result[0].businesses.name
-	# 	end
-	# end
+
 end
 
