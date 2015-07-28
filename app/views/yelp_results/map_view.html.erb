@@ -8,6 +8,7 @@ $(function () {
 	});
 	
 	var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 13);
+	var currentLocation = [<%= @latitude %>, <%= @longitude %>];
 
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -15,7 +16,11 @@ $(function () {
 	    maxZoom: 18,
 	    id: 'wbishop231.n15g88p3',
 	    accessToken: 'pk.eyJ1Ijoid2Jpc2hvcDIzMSIsImEiOiJlNjdmZWQ5NWMwMjdmOTNiNjJiZTY0ZTdmZTVlOWY0OSJ9.11weNx-x_-nmTstxP9Kq6g'
-	}).addTo(map);		
+	}).addTo(map);	
+
+	var marker = L.marker(currentLocation).addTo(map);
+	var marker2 = L.marker(<%=@results%>).addTo(map);
+
 })
 
 </script>
