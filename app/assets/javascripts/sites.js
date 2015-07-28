@@ -1,13 +1,5 @@
 
 //Gets User Location, adds to Form//
-$(function() {
-
-
-	if ("geolocation" in navigator) {
-	  getLocation();
-	} else {
-	  alert("Geolocation is not available")
-	}
 
 	function getLocation() {
 	  console.log('Getting location...'); 
@@ -23,7 +15,6 @@ $(function() {
 	};
 
 	function onLocation (position) {
-	  console.log("Got it!");
 	  var lat = position.coords.latitude;
 	  var lon = position.coords.longitude;
 	  console.log("Your posititon is " + lat + " latitude and " + lon + " longitude.");
@@ -40,8 +31,6 @@ $(function() {
 	  document.getElementById('lat').value = lat;
 	  document.getElementById('lon').value = lon;
 	}
-
-})
 
 
 
