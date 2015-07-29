@@ -7,9 +7,10 @@ class YelpResultsController < ApplicationController
     @longitude = params[:longitude]
   	coordinates = { latitude: @latitude, longitude: @longitude }
   	new_search = YelpSearcher.new
-    @results = new_search.get_results(coordinates, parameters, locale)
-
-	
+    @businesses = new_search.get_results(coordinates, parameters, locale)
+    # @results_all = new_search.get_results(coordinates, parameters, locale)
+    # @results_all.get_sorted_results(coordinates, parameters, locale)
     render :map_view
+
   end
 end
