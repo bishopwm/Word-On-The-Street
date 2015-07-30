@@ -19,15 +19,29 @@
 		    accessToken: 'pk.eyJ1Ijoid2Jpc2hvcDIzMSIsImEiOiJlNjdmZWQ5NWMwMjdmOTNiNjJiZTY0ZTdmZTVlOWY0OSJ9.11weNx-x_-nmTstxP9Kq6g'
 		}).addTo(map);	
 
-		var markers = {}
-		var popupContents = {}
+		var markersYelp = {}
+		var markersMeetup = {}
 		var currentLocationMarker = L.marker(currentLocation).addTo(map);
+		var currentLocationContent = '<h4>You Are Here</h4>'
+		currentLocationMarker.bindPopup(currentLocationContent);
+
+		//Yelp Content
+		var popupContentsYelp = {}
 
 		<% @businesses.each_with_index do |business, index| %>
-			popupContents["popup" + <%= index %>] = '<h3><%=escape_javascript business[:name].to_s %></h3><p><%=escape_javascript business[:address].to_s %></p>'
-			markers["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>).bindPopup(popupContents['popup' + <%= index %>]).addTo(map);
+			popupContentsYelp["popup" + <%= index %>] = '<h3><%=escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p><p><%=escape_javascript business[:category].to_s.gsub!(/\W/,' ') %></p>'
+			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
 		<% end %>
 	
+		//Meetup Content
+		var popupContentsMeetup = {}
+
+
+		<% @meetups.each_with_index do |meetup, index| %>
+			popupContentsMeetup["popup" + <%= index %>] = '<h3><%=escape_javascript meetup["event"]%></h3>'
+			debugger;
+			markersMeetup["marker" + <%= index %>] = L.marker(<%= meetup["coordinates"] %>).bindPopup(popupContentsMeetup['popup' + <%= index %>]).addTo(map);
+		<% end %>
 
 	})
 

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'httparty'
+
 gem 'yelp', require: 'yelp'
 
 gem 'devise'

@@ -13,6 +13,31 @@
  *= require_tree .
  *= require_self
  */
-#map { height: 400px;
-	   width: auto;
+#map { 
+	height: 600px;
+
  }
+
+/*.main-search {
+	z-index: 1; position:absolute
+ }
+
+#background-map {
+	height: 600px;
+	position:absolute; 
+	top: 4em; 
+	bottom:0; 
+	width:100%;
+}*/
+
+.nav-bar {
+	list-style-type: none;
+	padding-top: 1em;
+	padding-bottom: 2em;
+	margin-top: 0;
+}
+
+.list-item {
+	margin-right: 3em;
+	display: inline;
+}

@@ -1,40 +1,87 @@
 <!DOCTYPE html>
 <html>
+
+
+
 <head>
-  <title>WordOnTheStreet</title>
+  <title>TakeMeBak</title>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<nav class="nav">
-	      <ul class="nav nav-tabs">
-	        <li><a href="#"><%= link_to "Home", '/' %></a></li>
-	        <li><a href="#"><%= link_to "Featured Listings", '/' %></a></li>
 
-	        <li><a href="#"><%= link_to "Sign Up", new_user_registration_path %></a></li>
-	        <li><a href="#">
-	        	<% if current_user %>
-	        		<%= link_to "Sign-out", destroy_user_session_path, :method => :delete %>
-				<% else %>
-				<%= link_to "Sign-in", new_user_session_path %>
-				<% end %>
-	        	</a></li>
-	        <li class="login-nav-tab pull-right">
-	        	<%= form_tag new_user_session_path do %>
-				Email <%= text_field_tag :email %>
-				Password <%= password_field_tag :password %>
-				<%= submit_tag "Login" %>
-				<% end %>
-	        </li>
-     	  </ul>
+	<body>
 
-  </nav>
+<div class="container_nav">
+	<nav class="nav">
+		      <ul class="nav-bar">
+		        <li class="list-item"><a href="#"><%= link_to "Home", '/' %></a></li>
+		        <li class="list-item"><a href="#"><%= link_to "Featured Listings", '/' %></a></li>
 
-<%= yield %>
+		        <li class="list-item"><a href="#"><%= link_to "Sign Up", new_user_registration_path %></a></li>
+		        <li class="list-item"><a href="#">
+		        	<% if current_user %>
+		        		<%= link_to "Sign-out", destroy_user_session_path, :method => :delete %>
+					<% else %>
+					<%= link_to "Sign-in", new_user_session_path %>
+					<% end %>
+		        	</a></li>
+		        <li class="list-item login-nav-bar pull-right">
+		        	<%= form_tag new_user_session_path do %>
+					Email <%= text_field_tag :email %>
+					Password <%= password_field_tag :password %>
+					<%= submit_tag "Login" %>
+					<% end %>
+		        </li>
+	     	  </ul>
 
-</body>
+	  </nav>
+</div>
+
+<div class="main-search">
+<%= form_tag("/map", method: 'get' ) do %>
+	Search <%= text_field_tag('q') %>
+	<%= hidden_field_tag('latitude', nil, { :id => 'lat' }) %>
+	<%= hidden_field_tag('longitude', nil, { :id => 'lon' }) %>
+	<%= submit_tag "Submit" %>
+<% end %>
+</div>
+
+<div id="background-map">
+<script type="text/javascript">
+		
+		// var map = L.map('background-map').setView([12, 0], 3);
+
+		// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+		//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		//     maxZoom: 18,
+		//     id: 'wbishop231.n1gg8ng0',
+		//     accessToken: 'pk.eyJ1Ijoid2Jpc2hvcDIzMSIsImEiOiJlNjdmZWQ5NWMwMjdmOTNiNjJiZTY0ZTdmZTVlOWY0OSJ9.11weNx-x_-nmTstxP9Kq6g'
+		// }).addTo(map);	
+
+		// // Disable drag and zoom handlers.
+		// map.dragging.disable();
+		// map.touchZoom.disable();
+		// map.doubleClickZoom.disable();
+		// map.scrollWheelZoom.disable();
+
+		// // Disable tap handler, if present.
+		// if (map.tap) map.tap.disable()
+
+
+</script>
+
+
+
+
+
+	<%= yield %>
+
+
+
+	</body>
+</div>
 </html>
