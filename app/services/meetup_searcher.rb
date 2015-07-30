@@ -1,4 +1,4 @@
-require 'net/http'
+
 
 class MeetupSearcher
 
@@ -11,13 +11,15 @@ class MeetupSearcher
 	  longitude = coordinates[:longitude]
 		responses = HTTParty.get("https://api.meetup.com/2/open_events?key=#{account_key}&lat=#{latitude}&lon=#{longitude}")
 
-		responses.each do |response|
+		responses["results"].each do |result|
+			next if result['venue'].nil?
 		  @meetup_events << {
-		  	'event' => responses['results'][1]['name'],
-		  	'address' => responses['results'][1]['venue']['address_1'],
-		  	'coordinates' => [responses['results'][1]['venue']['lat'], responses['results'][1]['venue']['lon']]
+		  	'event' => result['name'],
+		  	'address' => result['venue']['address_1'],
+		  	'coordinates' => [result['venue']['lat'], result['venue']['lon']]
 		  }
 		end
+
 		@meetup_events
 
 	end

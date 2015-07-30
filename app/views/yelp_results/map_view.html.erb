@@ -39,7 +39,6 @@
 
 		<% @meetups.each_with_index do |meetup, index| %>
 			popupContentsMeetup["popup" + <%= index %>] = '<h3><%=escape_javascript meetup["event"]%></h3>'
-			debugger;
 			markersMeetup["marker" + <%= index %>] = L.marker(<%= meetup["coordinates"] %>).bindPopup(popupContentsMeetup['popup' + <%= index %>]).addTo(map);
 		<% end %>
 

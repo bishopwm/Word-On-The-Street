@@ -1,5 +1,4 @@
 
-
 Yelp.client.configure do |config|
   config.consumer_key = "-G070hmbiLG3ENDT5XMpng"
   config.consumer_secret = "9GoN6wRTKAlYsg10ALS6tqkX2wU"
