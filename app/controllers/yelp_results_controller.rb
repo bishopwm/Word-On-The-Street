@@ -15,7 +15,7 @@ class YelpResultsController < ApplicationController
 
   # MEETUP
     new_search_meetup = MeetupSearcher.new
-    @meetups = new_search_meetup.get_meetup_results(coordinates)
+    @meetups = new_search_meetup.get_meetup_results(coordinates, parameters)
 
     render :map_view
 

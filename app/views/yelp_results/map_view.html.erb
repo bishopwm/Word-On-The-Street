@@ -47,10 +47,11 @@
 			popupContentsYelp["popup" + <%= index %>] = '<h3><%=escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p><p><%=escape_javascript business[:category].to_s.gsub!(/\W/,' ') %></p>'
 			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>, {icon: yelpIcon}).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
 		<% end %>
+
+		
 	
 		//Meetup Content
 		var popupContentsMeetup = {}
-
 
 		<% @meetups.each_with_index do |meetup, index| %>
 			popupContentsMeetup["popup" + <%= index %>] = '<h3><%=escape_javascript meetup["event"]%></h3>'

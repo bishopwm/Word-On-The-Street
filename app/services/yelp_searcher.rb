@@ -7,6 +7,7 @@ class YelpSearcher
 
 		Yelp.client.search_by_coordinates(coordinates, parameters, locale).businesses.each do |business|
 			nearby_businesses << {
+
 				:coordinates => [business.location.coordinate.latitude, business.location.coordinate.longitude],
 				:address => business.location.address,
 				:name => business.name,
