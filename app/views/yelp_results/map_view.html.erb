@@ -25,12 +25,27 @@
 		var currentLocationContent = '<h4>You Are Here</h4>'
 		currentLocationMarker.bindPopup(currentLocationContent);
 
+		var meetupIcon = L.icon({
+		    iconUrl: '/assets/Meetup_Logo.png',
+		    iconSize: [55, 40],
+		    iconAnchor: [22, 64],
+		    popupAnchor: [-3, -76]
+		});
+
+		var yelpIcon = L.icon({
+			iconUrl: '/assets/Yelp_Logo.png',
+			iconSize: [55, 40],
+		    iconAnchor: [22, 64],
+		    popupAnchor: [-3, -76]			
+		})
+
+
 		//Yelp Content
 		var popupContentsYelp = {}
 
 		<% @businesses.each_with_index do |business, index| %>
 			popupContentsYelp["popup" + <%= index %>] = '<h3><%=escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p><p><%=escape_javascript business[:category].to_s.gsub!(/\W/,' ') %></p>'
-			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
+			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>, {icon: yelpIcon}).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
 		<% end %>
 	
 		//Meetup Content
@@ -39,7 +54,7 @@
 
 		<% @meetups.each_with_index do |meetup, index| %>
 			popupContentsMeetup["popup" + <%= index %>] = '<h3><%=escape_javascript meetup["event"]%></h3>'
-			markersMeetup["marker" + <%= index %>] = L.marker(<%= meetup["coordinates"] %>).bindPopup(popupContentsMeetup['popup' + <%= index %>]).addTo(map);
+			markersMeetup["marker" + <%= index %>] = L.marker(<%= meetup["coordinates"] %>, {icon: meetupIcon}).bindPopup(popupContentsMeetup['popup' + <%= index %>]).addTo(map);
 		<% end %>
 
 	})
