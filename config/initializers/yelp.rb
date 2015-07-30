@@ -1,7 +1,7 @@
 
 Yelp.client.configure do |config|
-  config.consumer_key = "-G070hmbiLG3ENDT5XMpng"
-  config.consumer_secret = "9GoN6wRTKAlYsg10ALS6tqkX2wU"
-  config.token = "8cZHAf-EBylfijGjA2CrtLAEnJN7Nv3i"
-  config.token_secret = "_3P8F7jpsslWE3j1aqfw-6cZON8"
+  config.consumer_key = ENV["yelp_consumer_key"]
+  config.consumer_secret = ENV["yelp_consumer_secret"]
+  config.token = ENV["yelp_token"]
+  config.token_secret = ENV["yelp_token_secret"]
 end

@@ -1,6 +1,6 @@
 # Add configuration values here, as shown below.
 #
-# pusher_app_id: "2954"
+# pusher_app_id: '2954'
 # pusher_key: 7381a978f7dd7f9a1117
 # pusher_secret: abdc3b896a0ffb85d373
 # stripe_api_key: sk_test_2J0l093xOyW72XUYJHE4Dv2r
@@ -10,4 +10,16 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
+## Meetup
+meetup_searcher_account_key: '65de4018521164813321f8656cf'
 
+## Mapbox
+mapbox_access_token: 'pk.eyJ1Ijoid2Jpc2hvcDIzMSIsImEiOiJlNjdmZWQ5NWMwMjdmOTNiNjJiZTY0ZTdmZTVlOWY0OSJ9.11weNx-x_-nmTstxP9Kq6g'
+mapbox_id: 'wbishop231.n15g88p3'
+mapbox_id_2: 'wbishop231.n1gg8ng0'
+
+## Yelp
+yelp_consumer_key: '-G070hmbiLG3ENDT5XMpng'
+yelp_consumer_secret: '9GoN6wRTKAlYsg10ALS6tqkX2wU'
+yelp_token: '8cZHAf-EBylfijGjA2CrtLAEnJN7Nv3i'
+yelp_token_secret: '_3P8F7jpsslWE3j1aqfw-6cZON8'

@@ -12,11 +12,11 @@
 		var currentLocation = [<%= @latitude %>, <%= @longitude %>];
 
 
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={access_token}', {
 		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		    maxZoom: 18,
-		    id: 'wbishop231.n15g88p3',
-		    accessToken: 'pk.eyJ1Ijoid2Jpc2hvcDIzMSIsImEiOiJlNjdmZWQ5NWMwMjdmOTNiNjJiZTY0ZTdmZTVlOWY0OSJ9.11weNx-x_-nmTstxP9Kq6g'
+		    id: "<%= ENV['mapbox_id'] %>",
+		    access_token: "<%= ENV['mapbox_access_token'] %>"
 		}).addTo(map);	
 
 		var markersYelp = {}
@@ -48,7 +48,7 @@
 			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>, {icon: yelpIcon}).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
 		<% end %>
 
-		
+
 	
 		//Meetup Content
 		var popupContentsMeetup = {}

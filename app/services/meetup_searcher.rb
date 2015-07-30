@@ -6,7 +6,7 @@ class MeetupSearcher
 
 	  @meetup_events = []	
 
-	  account_key = '65de4018521164813321f8656cf'
+	  account_key = ENV["meetup_searcher_account_key"]
 	  text = parameters[:term]
 	  latitude = coordinates[:latitude]
 	  longitude = coordinates[:longitude]
