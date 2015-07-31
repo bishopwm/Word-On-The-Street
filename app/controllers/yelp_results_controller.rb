@@ -5,6 +5,7 @@ class YelpResultsController < ApplicationController
   #GENERAL SEARCH
   	parameters = { term: params[:q], limit: 16 }
   	locale = { lang: 'en' }
+    twitter_term = { :term => params[:q] }
   	@latitude = params[:latitude]
     @longitude = params[:longitude]
   	coordinates = { latitude: @latitude, longitude: @longitude }
@@ -16,6 +17,10 @@ class YelpResultsController < ApplicationController
   # MEETUP
     new_search_meetup = MeetupSearcher.new
     @meetups = new_search_meetup.get_meetup_results(coordinates, parameters)
+
+  # TWITTER
+    new_search_twitter = TwitterSearcher.new
+    @tweets = new_search_twitter.get_twitter_results(twitter_term, locale)
 
     render :map_view
 

@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'twitter'
+
 gem 'httparty'
 
 gem 'yelp', require: 'yelp'
