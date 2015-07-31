@@ -1,9 +1,32 @@
+<div class="hero-unit">
+	<div class="hero-hugs">
+	  <h1>What's the <br /><strong>Word On<br />The Street?</strong></h1>
+	  <h2>Find Your<br />International<br />Community<br />Locally:</h2>
+	</div>
+</div>
+
 
 <div id="map"></div>
+
+
+<div class = "well">
+<form>
+  <div class="form-group">
+    <label for="new-search">New Search</label>
+    <input type="text" class="form-control" name="q" id="new-search" placeholder="Enter Nationality">
+    <input type="hidden" class="form-control" name="latitude" id="lat">
+    <input type="hidden" class="form-control" name="longitude" id="lon">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+</div>
 
 <script type="text/javascript">
 
 	$(function () {
+		$('#lat').val(localStorage.getItem('latitude'));
+		$('#lon').val(localStorage.getItem('longitude'));
 		
 		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 13);
 		var currentLocation = [<%= @latitude %>, <%= @longitude %>];
@@ -15,6 +38,8 @@
 		    id: "<%= ENV['mapbox_id'] %>",
 		    access_token: "<%= ENV['mapbox_access_token'] %>"
 		}).addTo(map);	
+
+		map.scrollWheelZoom.disable();
 
 		var markersYelp = {}
 		var markersMeetup = {}
@@ -41,7 +66,7 @@
 		var popupContentsYelp = {}
 
 		<% @businesses.each_with_index do |business, index| %>
-			popupContentsYelp["popup" + <%= index %>] = '<h3><%=escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p><p><%=escape_javascript business[:category].to_s.gsub!(/\W/,' ') %></p>'
+			popupContentsYelp["popup" + <%= index %>] = '<h3><%=escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p>'
 			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>, {icon: yelpIcon}).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
 		<% end %>
 
@@ -70,4 +95,3 @@
 	})
 
 </script>
-

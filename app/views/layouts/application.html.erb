@@ -42,30 +42,6 @@
 
 
 
-
-
-
-<div class="hero-unit">
-	<div class="hero-hugs">
-	  <h1>What's the <br /><strong>Word On<br />The Street?</strong></h1>
-	  <h2>Find Your<br />International<br />Community<br />Locally:</h2>
-	  <p>	
-	  	<%= form_tag("/map", method: 'get', :class => "form-inline myinput") do %>
-				<%= hinted_text_field_tag('q') %>
-				<%= hidden_field_tag('latitude', nil, { :id => 'lat' }) %>
-				<%= hidden_field_tag('longitude', nil, { :id => 'lon' }) %>
-				<%= submit_tag "Submit", name: nil, :class => "btn btn-default" %>
-
-			<% end %>
-	  </p>
-	</div>
-</div>
-
-
-
-
-
-
 <%= yield %>
 
 	

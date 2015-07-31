@@ -2,7 +2,7 @@
 //Gets User Location, adds to Form//
 
 	function getLocation() {
-	  console.log('Getting location...'); 
+	  console.log('Getting location...');
 	  navigator.geolocation.getCurrentPosition(onLocation, onError, options);
 	}
 
@@ -17,8 +17,9 @@
 	function onLocation (position) {
 	  var lat = position.coords.latitude;
 	  var lon = position.coords.longitude;
+
 	  console.log("Your posititon is " + lat + " latitude and " + lon + " longitude.");
-	  addLocationValueToForm(lat, lon);
+	  addLocationValueToForm();
 	}
 
 	function onError(error) {
@@ -27,9 +28,9 @@
 
 
 
-	function addLocationValueToForm (lat, lon) {
-	  document.getElementById('lat').value = lat;
-	  document.getElementById('lon').value = lon;
+	function addLocationValueToForm () {
+	  document.getElementById('lat').value = window.localStorage.getItem("latitude");
+	  document.getElementById('lon').value = window.localStorage.getItem("longitude");
 	}
 
 

@@ -15,12 +15,13 @@
  */
 
 #map { 
-	height: 600px;
+	height: 500px;
 	margin-top: 100px;
 	margin-left: 20px;
 	margin-right: 20px;
-	margin-bottom: 100px;
+	margin-bottom: 10px;
  }
+
 
 
 .hero-unit {
@@ -29,22 +30,31 @@
 	height: 580px;
 	background-image: url("/assets/international.jpg");
 	background-size: auto 100%;
-	background-position: center;
 	background-repeat: no-repeat;
 	z-index: -1;
 }
 
 .hero-hugs {
+	padding-top: 200px;
+	margin-top: 180px;
+	margin-left:375px;
+
+}
+
+.hero-hugs-child {
 	padding: 10px;
-	margin-top: 200px;
-	margin-left:30px;
-	color: #091D39;
+	color: white;
+	background-color: rgba(8, 41, 68, 0.49); 
+	width: 600px;
+	border-radius: 10px;
+
+	
 }
 
 
-.myinput {
+/*.myinput {
 	width: 400px;
-}
+}*/
 
 
 .nav-bar {
