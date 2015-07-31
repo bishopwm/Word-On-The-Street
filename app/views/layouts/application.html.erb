@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
-
-
-
 <head>
-  <title>TakeMeBak</title>
+  <title>Word On The Street</title>
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -13,13 +10,14 @@
 </head>
 
 
-	<body>
 
+
+<body>
 <div class="container_nav">
 	<nav class="nav">
 		      <ul class="nav-bar">
 		        <li class="list-item"><a href="#"><%= link_to "Home", '/' %></a></li>
-		        <li class="list-item"><a href="#"><%= link_to "Featured Listings", '/' %></a></li>
+		        <li class="list-item"><a href="#"><%= link_to "My Community", '/' %></a></li>
 
 		        <li class="list-item"><a href="#"><%= link_to "Sign Up", new_user_registration_path %></a></li>
 		        <li class="list-item"><a href="#">
@@ -41,47 +39,38 @@
 	  </nav>
 </div>
 
-<div class="main-search">
-<%= form_tag("/map", method: 'get' ) do %>
-	Search <%= text_field_tag('q') %>
-	<%= hidden_field_tag('latitude', nil, { :id => 'lat' }) %>
-	<%= hidden_field_tag('longitude', nil, { :id => 'lon' }) %>
-	<%= submit_tag "Submit" %>
-<% end %>
+
+
+
+
+
+
+<div class="hero-unit">
+	<div class="hero-hugs">
+	  <h1>What's the <br /><strong>Word On<br />The Street?</strong></h1>
+	  <h2>Find Your<br />International<br />Community<br />Locally:</h2>
+	  <p>	
+	  	<%= form_tag("/map", method: 'get', :class => "form-inline myinput") do %>
+				<%= hinted_text_field_tag('q') %>
+				<%= hidden_field_tag('latitude', nil, { :id => 'lat' }) %>
+				<%= hidden_field_tag('longitude', nil, { :id => 'lon' }) %>
+				<%= submit_tag "Submit", name: nil, :class => "btn btn-default" %>
+
+			<% end %>
+	  </p>
+	</div>
 </div>
 
-<div id="background-map">
-<script type="text/javascript">
-		
-		// var map = L.map('background-map').setView([12, 0], 3);
-
-		// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={access_token}', {
-		//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-		//     maxZoom: 18,
-		//     id_2: ENV["mapbox_id_2],
-		//     access_token: ENV["mapbox_access_token"]
-		// }).addTo(map);	
-
-		// // Disable drag and zoom handlers.
-		// map.dragging.disable();
-		// map.touchZoom.disable();
-		// map.doubleClickZoom.disable();
-		// map.scrollWheelZoom.disable();
-
-		// // Disable tap handler, if present.
-		// if (map.tap) map.tap.disable()
-
-
-</script>
 
 
 
 
 
-	<%= yield %>
+<%= yield %>
+
+	
 
 
 
 	</body>
-</div>
 </html>

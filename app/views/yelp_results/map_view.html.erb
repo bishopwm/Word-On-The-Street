@@ -4,9 +4,6 @@
 <script type="text/javascript">
 
 	$(function () {
-		document.addEventListener("LocationLoaded", function() {
-		  addTo(map);
-		});
 		
 		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 13);
 		var currentLocation = [<%= @latitude %>, <%= @longitude %>];
@@ -58,6 +55,19 @@
 			markersMeetup["marker" + <%= index %>] = L.marker(<%= meetup["coordinates"] %>, {icon: meetupIcon}).bindPopup(popupContentsMeetup['popup' + <%= index %>]).addTo(map);
 		<% end %>
 
+		function goTo($el) {
+			console.log("hello from goTo")
+		    $('html, body').animate({
+		        scrollTop: $el.offset().top + 'px'
+		    }, 'slow');
+		    return $el;
+	    }
+
+	    // $("html, body").animate({ scrollTop: $('#title1').offset().top }, 1000);
+
+	    goTo($('#map'));
+
 	})
 
 </script>
+
