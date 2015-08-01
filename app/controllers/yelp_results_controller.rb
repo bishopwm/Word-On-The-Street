@@ -20,7 +20,7 @@ class YelpResultsController < ApplicationController
 
   # TWITTER
     new_search_twitter = TwitterSearcher.new
-    @tweets = new_search_twitter.get_twitter_results(twitter_term, locale)
+    @tweets = new_search_twitter.get_twitter_results(twitter_term)
 
     render :map_view
 

@@ -64,7 +64,7 @@
 		var popupContentsYelp = {}
 
 		<% @businesses.each_with_index do |business, index| %>
-			popupContentsYelp["popup" + <%= index %>] = '<h3><%=escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p>'
+			popupContentsYelp["popup" + <%= index %>] = '<h3><%=escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0].to_s.gsub!(/\W/,' ') %></p>'
 			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>, {icon: yelpIcon}).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
 		<% end %>
 
@@ -77,6 +77,8 @@
 			popupContentsMeetup["popup" + <%= index %>] = '<h3><%=escape_javascript meetup["event"]%></h3>'
 			markersMeetup["marker" + <%= index %>] = L.marker(<%= meetup["coordinates"] %>, {icon: meetupIcon}).bindPopup(popupContentsMeetup['popup' + <%= index %>]).addTo(map);
 		<% end %>
+
+
 
 		function goTo($el) {
 			console.log("hello from goTo")

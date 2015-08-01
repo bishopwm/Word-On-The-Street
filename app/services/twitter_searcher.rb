@@ -12,14 +12,22 @@ class TwitterSearcher
 		end
 	end
 
-	def get_twitter_results(twitter_term, locale)
 
-	client.search('twitter_term -rt', locale).first.text
+	def get_twitter_results(twitter_term)
+		recent_tweets = []
 
+	client.search("#{twitter_term}", result_type: "recent").take(3).collect do |tweet|
+	  recent_tweets << {
+	  	:tweet => tweet.text
+	  }
+	end
 
-	fail
+	recent_tweets
 
 	end
+
+
+
 
 
 end
