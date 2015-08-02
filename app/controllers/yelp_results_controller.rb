@@ -8,6 +8,8 @@ class YelpResultsController < ApplicationController
     twitter_term = { :term => params[:q] }
   	@latitude = params[:latitude]
     @longitude = params[:longitude]
+    latitude = params[:latitude]
+    longitude = params[:longitude]
   	coordinates = { latitude: @latitude, longitude: @longitude }
 
   # YELP

@@ -29,3 +29,7 @@ twitter_access_token: '54758449-Cs2OaKnNSqtNqTqtMPpixfLE4nLzMYC047J7N60nt'
 twitter_access_token_secret: 'AnGRpYNCeF5R7NuHQXLOKYIScrFIqT9vAms7xTp4Ckfsw'
 twitter_consumer_key: 'ODRzLY9DU971E7T1X1sYsM0Pa'
 twitter_consumer_secret: 'mphneG21WlK2vmxcJ8bjwmfwTunFs8oqBytebQ6fyYJBewOn12'
+
+## Instagram
+instagram_client_id: 'ce732716f8e648d8b5575b6349e32f80'
+instagram_client_secret: '6cfdf017d8244390a5105aa8be81c2c1'
