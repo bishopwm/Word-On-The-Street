@@ -1,0 +1,24 @@
+<h2>Saved Word on the Street</h2>
+
+
+<ul>
+	<% @streetwords.each do |streetword| %>
+		<li>Name:
+			<%= streetword.name %>
+		</li>
+		<li>Latitude:
+			<%= streetword.latitude %>
+		<li>Longitude:
+			<%= streetword.longitude %>
+		</li>
+		<li>address:
+			<%= streetword.address %>
+		</li>
+		<li>User ID:
+			<%= streetword.user_id %>
+		</li>
+		<br />
+
+
+	<% end %>
+</ul>

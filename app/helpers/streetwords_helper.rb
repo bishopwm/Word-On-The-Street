@@ -1,0 +1,2 @@
+module StreetwordsHelper
+end
