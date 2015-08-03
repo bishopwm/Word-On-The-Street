@@ -22,7 +22,11 @@ class YelpResultsController < ApplicationController
 
   # TWITTER
     new_search_twitter = TwitterSearcher.new
-    @tweets = new_search_twitter.get_twitter_results(twitter_term)
+    @tweets = new_search_twitter.get_twitter_results(twitter_term, latitude, longitude)
+
+  # INSTAGRAM
+    # new_search_insta = InstaSearcher.new
+    # @instas = new_search_insta.get_insta_results(parameters,latitude, longitude)
 
     render :map_view
 
