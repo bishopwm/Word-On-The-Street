@@ -9,6 +9,8 @@ class YelpSearcher
 			nearby_businesses << {
 
 				:coordinates => [business.location.coordinate.latitude, business.location.coordinate.longitude],
+				:latitude => business.location.coordinate.latitude,
+				:longitude => business.location.coordinate.longitude,
 				:address => business.location.address,
 				:name => business.name
 				# :category => business.categories[0][0]

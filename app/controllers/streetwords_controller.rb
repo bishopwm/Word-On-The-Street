@@ -6,8 +6,8 @@ class StreetwordsController < ApplicationController
 	end
 
 	def create
-		@user = User.find(params[:user_id])
-		@streetword = @user.streetword.new(streetword_params)
+		fail
+		@streetword = current_user.streetword.new(streetword_params)
 		if @streetword.valid?
 			@streetword.save
 			redirect_to street_words_path(@user), notice: "Post was successfull!"
@@ -25,7 +25,7 @@ class StreetwordsController < ApplicationController
 	private
 
   	def street_word_params
-    	params.require(:streetword).permit(:user_id, :name, :latitude, :longitude, :address)
+    	params.require(:streetword).permit(:name, :latitude, :longitude, :address)
   	end
 
 end

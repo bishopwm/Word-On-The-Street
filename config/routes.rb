@@ -6,6 +6,6 @@ Rails.application.routes.draw do
 
 
 
-  resources :street_words, only: [:index, :new, :create, :destroy]
+  resources :streetwords, only: [:index, :new, :create, :destroy]
  
 end

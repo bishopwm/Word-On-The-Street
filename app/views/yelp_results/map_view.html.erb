@@ -63,9 +63,17 @@
 		//Yelp Content
 		var popupContentsYelp = {}
 
-		<% @businesses.each_with_index do |business, index| %>
-			popupContentsYelp["popup" + <%= index %>] = "<h3><%=escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0].to_s.gsub!(/\W/,' ') %></p><p><form action='/map'><input type='hidden' class='hidden-form' name='name' id='name'><input type='hidden' class='hidden-form' name='latitude' id='lat'><input type='hidden' class='hidden-form' name='longitude' id='lon'><input type='hidden' class='hidden-form' name='address' id='address'><button type='submit' class='btn btn-default'>Save</button></form></p>"
 
+
+		<% @businesses.each_with_index do |business, index| %>
+			<% if current_user %>
+				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0].to_s.gsub!(/\W/,' ') %></p><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= business[:name] %>' name='streetword[name]'><input type='hidden' value='<%= business[:latitude] %>' name='streetword[latitude]' ><input type='hidden' value='<%= business[:longitude] %>' name='streetword[longitude]'><input type='hidden' value='<%= business[:address] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
+			<% else %>
+				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0].to_s.gsub!(/\W/,' ') %></p>"
+			<% end %>
+
+		// document.getElementById('address').value = <%= business[:address] %>;
+		// document.getElementById('name').value = <%= business[:name] %>;
  				
 
 			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>, {icon: yelpIcon}).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
