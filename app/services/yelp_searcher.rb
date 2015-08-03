@@ -13,7 +13,6 @@ class YelpSearcher
 				:longitude => business.location.coordinate.longitude,
 				:address => business.location.address,
 				:name => business.name
-				# :category => business.categories[0][0]
 			}
 
 		end
