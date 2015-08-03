@@ -10,4 +10,11 @@ class Streetword < ActiveRecord::Base
 	def self.last_created(n)
 		order('user_id ASC')
 	end
+
+	def add_community_to_map
+
+
+
+		
+	end
 end

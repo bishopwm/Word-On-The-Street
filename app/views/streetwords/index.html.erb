@@ -1,20 +1,21 @@
-<h2>Saved Word on the Street</h2>
+<h2>My Community</h2>
 
 
-<ul>
+<ul class="streetwords-list">
 	<% @streetwords.each do |streetword| %>
-		<li>Name:
+		<li class="streetwords-list-item"><strong>Name: </strong>
 			<%= streetword.name %>
 		</li>
-		<li>Latitude:
+		<li class="streetwords-list-item"><strong>Latitude: </strong>
 			<%= streetword.latitude %>
-		<li>Longitude:
+		</li>
+		<li class="streetwords-list-item"><strong>Longitude: </strong>
 			<%= streetword.longitude %>
 		</li>
-		<li>address:
+		<li class="streetwords-list-item"><strong>address: </strong>
 			<%= streetword.address %>
 		</li>
-		<li>User ID:
+		<li class="streetwords-list-item"><strong>User ID: </strong>
 			<%= streetword.user_id %>
 		</li>
 		<br />
@@ -22,3 +23,66 @@
 
 	<% end %>
 </ul>
+
+<div id="map"></div>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+<script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+<style>
+	#map { height: 600px; }
+	.streetwords-list-item { 
+		display: inline;
+		list-style-type: none;
+	}
+</style>
+
+<script type="text/javascript">
+
+	$(function () {
+		var latitude = window.localStorage.getItem("latitude");
+		var longitude = window.localStorage.getItem("longitude");
+
+		var map = L.map('map').setView([latitude, longitude], 14);
+
+		var currentLocation = [latitude, longitude];
+
+
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={access_token}', {
+		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		    maxZoom: 18,
+		    id: "<%= ENV['mapboxx_id'] %>",
+		    access_token: "<%= ENV['mapbox_access_token'] %>"
+		}).addTo(map);	
+
+		map.scrollWheelZoom.disable();
+
+		var communityMarkers = {}
+		var currentLocationMarker = L.marker(currentLocation).addTo(map);
+		var currentLocationContent = '<h4>You Are Here</h4>'
+		currentLocationMarker.bindPopup(currentLocationContent);
+
+		var communityIcon = L.icon({
+			iconUrl: '/assets/community.png',
+			iconSize: [45, 45],
+		    iconAnchor: [22, 64],
+		    popupAnchor: [-3, -76]			
+		})
+
+
+		//Yelp Content
+		var communityPopupContents = {}
+
+		<% @streetwords.each_with_index do |streetword, index| %>
+				communityPopupContents["popup" + <%= index %>] = "<h3><%= escape_javascript streetword.name %></h3><p><strong>Address: <br /></strong><%=escape_javascript streetword.address %></p>"
+
+			communityMarkers["marker" + <%= index %>] = L.marker([<%= streetword.latitude %>, <%= streetword.longitude %>], {icon: communityIcon}).bindPopup(communityPopupContents['popup' + <%= index %>]).addTo(map);
+		
+		<% end %>
+
+
+
+
+
+
+	})
+
+</script>

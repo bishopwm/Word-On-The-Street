@@ -17,9 +17,12 @@
 	<nav class="nav">
 		      <ul class="nav-bar">
 		        <li class="list-item"><a href="#"><%= link_to "Home", '/' %></a></li>
-		        <li class="list-item"><a href="#"><%= link_to "My Community", '/' %></a></li>
-
+		        <% if current_user %>
+		        <li class="list-item"><a href="#"><%= link_to "My Community", streetwords_path %></a></li>
+		        <% end %>
+				<% if current_user.nil? %>
 		        <li class="list-item"><a href="#"><%= link_to "Sign Up", new_user_registration_path %></a></li>
+		        <% end %>
 		        <li class="list-item"><a href="#">
 		        	<% if current_user %>
 		        		<%= link_to "Sign-out", destroy_user_session_path, :method => :delete %>

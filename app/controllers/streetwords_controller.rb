@@ -10,7 +10,7 @@ class StreetwordsController < ApplicationController
 		@streetword = current_user.streetwords.new(street_word_params)
 		if @streetword.valid?
 			@streetword.save
-			redirect_to streetwords_path(current_user), notice: "Post was successfull!"
+			redirect_to streetwords_path, notice: "Post was successfull!"
 		else
 			redirect_to '/'
 		end
@@ -21,6 +21,11 @@ class StreetwordsController < ApplicationController
 		@streetword = Streetword.find_by(id: params[:id]).try(:destroy)
 	end
 
+	def add_community_to_map
+		@latitude = params[:latitude]
+    	@longitude = params[:longitude]
+	end
+
 
 	private
 
@@ -29,3 +34,6 @@ class StreetwordsController < ApplicationController
   	end
 
 end
+
+
+

@@ -33,10 +33,6 @@
 	  document.getElementById('lon').value = window.localStorage.getItem("longitude");
 	}
 
-	function addSearchResultsToForm () {
-		document.getElementById('address').value = window.localStorage.getItem("address");
-		document.getElementById('name').value = window.localStorage.getItem("name");
-	}
 
 
 
