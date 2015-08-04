@@ -41,8 +41,6 @@
 
 		var markersYelp = {}
 		var markersMeetup = {}
-		var currentLocationMarker = L.marker(currentLocation).addTo(map);
-		var currentLocationContent = '<h4>You Are Here</h4>'
 
 		var currentLocationIcon = L.icon({
 		    iconUrl: '/assets/Meetup_Logo.png',
@@ -50,7 +48,9 @@
 		    iconAnchor: [22, 64],
 		    popupAnchor: [-3, -76]	
 		});
-		currentLocationMarker.bindPopup(currentLocationContent, {icon: currentLocationIcon}));
+		var currentLocationMarker = L.marker(currentLocation, {icon: currentLocationIcon}).addTo(map);
+		var currentLocationContent = '<h4>You Are Here</h4>'
+		currentLocationMarker.bindPopup(currentLocationContent);
 
 		var meetupIcon = L.icon({
 		    iconUrl: '/assets/Meetup_Logo.png',
