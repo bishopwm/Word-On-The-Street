@@ -21,7 +21,29 @@
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-bottom: 10px;
+
  }
+
+.insta-pic {
+	width: 70%;
+}
+
+.instas-list {
+	height: 430px;
+	overflow: auto;
+}
+
+.insta-list-item {
+	list-style-type: none;
+}
+
+.insta-bar {
+	height: 500px;
+	width: 350px;
+	float: right;
+	background-color: #C1C1C1;
+
+}
 
 
 
@@ -53,11 +75,6 @@
 
 	
 }
-
-
-/*.myinput {
-	width: 400px;
-}*/
 
 
 .nav-bar {

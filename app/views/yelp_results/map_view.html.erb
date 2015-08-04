@@ -3,8 +3,33 @@
 	</div>
 </div>
 
+<div class ="insta-map-wrapper">
+	<div class="well insta-bar">
+		<ul class="instas-list">
+			<% @instas.each do |insta| %>
+			<% next if insta['hashtag'].nil? %>
+			<li class="insta-list-item"><br />
+				<img src="<%= insta['image']['url'] %>" class="insta-pic">
+			</li>
+			<li class="insta-list-item"><strong>Hashtags: </strong><br />
+				<%= insta['hashtag'] %>
+			</li>
 
-<div id="map"></div>
+			<li class="insta-list-item"><strong>Location: </strong><br />
+				<%= insta['location_name'] %>
+			</li>
+			<li class="insta-list-item"><strong>Coordinates: </strong><br />
+				<%= insta['coordinates'].to_s %>
+			</li>
+
+			<br />
+				<% end %>
+		</ul>
+	</div>
+	<div id="map"></div>
+</div>
+
+
 
 
 <div class = "well">
@@ -26,7 +51,7 @@
 		$('#lat').val(localStorage.getItem('latitude'));
 		$('#lon').val(localStorage.getItem('longitude'));
 		
-		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 13);
+		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 14);
 		var currentLocation = [<%= @latitude %>, <%= @longitude %>];
 
 

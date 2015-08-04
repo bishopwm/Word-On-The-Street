@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 gem 'puma'
 
-gem 'instagram'
-
 gem 'twitter'
 
 gem 'httparty'
