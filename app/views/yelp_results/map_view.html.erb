@@ -5,14 +5,15 @@
 
 <div class ="insta-map-wrapper">
 	<div class="well insta-bar">
-		<ul class="instas-list">
+		<ul class="instas-list"><strong>What's Happening Nearby?</strong>
 			<% @instas.each do |insta| %>
-			<% next if insta['hashtag'].nil? %>
+			<% next if insta['location_name'].nil? %>
+
 			<li class="insta-list-item"><br />
 				<img src="<%= insta['image']['url'] %>" class="insta-pic">
 			</li>
 			<li class="insta-list-item"><strong>Hashtags: </strong><br />
-				<%= insta['hashtag'] %>
+				<%= insta['hashtag'].to_s.gsub!(/\W/,' ') %>
 			</li>
 
 			<li class="insta-list-item"><strong>Location: </strong><br />
@@ -66,10 +67,11 @@
 
 		var markersYelp = {}
 		var markersMeetup = {}
+		var markersInsta = {}
 
 		var currentLocationIcon = L.icon({
 		    iconUrl: '/assets/star.png',
-		    iconSize: [55, 40],
+		    iconSize: [70, 40],
 		    iconAnchor: [22, 64],
 		    popupAnchor: [-3, -76]	
 		});
@@ -90,6 +92,12 @@
 		    iconAnchor: [22, 64],
 		    popupAnchor: [-3, -76]			
 		});
+		var instaIcon = L.icon({
+			iconUrl: '/assets/insta.png',
+			iconSize: [45, 30],
+		    iconAnchor: [22, 64],
+		    popupAnchor: [-3, -76]			
+		});
 
 
 		//Yelp Content
@@ -99,7 +107,7 @@
 
 		<% @businesses.each_with_index do |business, index| %>
 			<% if current_user %>
-				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0].to_s.gsub!(/\W/,' ') %></p><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= business[:name] %>' name='streetword[name]'><input type='hidden' value='<%= business[:latitude] %>' name='streetword[latitude]' ><input type='hidden' value='<%= business[:longitude] %>' name='streetword[longitude]'><input type='hidden' value='<%= business[:address] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
+				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0] %></p><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= business[:name] %>' name='streetword[name]'><input type='hidden' value='<%= business[:latitude] %>' name='streetword[latitude]' ><input type='hidden' value='<%= business[:longitude] %>' name='streetword[longitude]'><input type='hidden' value='<%= business[:address] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
 			<% else %>
 				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0].to_s.gsub!(/\W/,' ') %></p>"
 			<% end %>
@@ -121,10 +129,16 @@
 			markersMeetup["marker" + <%= index %>] = L.marker(<%= meetup["coordinates"] %>, {icon: meetupIcon}).bindPopup(popupContentsMeetup['popup' + <%= index %>]).addTo(map);
 		<% end %>
 
+		//Insta Content
+		var popupContentsInsta = {}
+
+		<% @instas.each_with_index do |insta, index| %>
+			popupContentsInsta["popup" + <%= index %>] = "<p><img src='<%=escape_javascript insta['image']['url']%>'class='instapopup'></p><p>Hashtags: <%=escape_javascript insta['hashtag'].to_s.gsub!(/\W/,' ') %></p><p>Location: <%=escape_javascript insta['location_name'] %></p>"
+			markersInsta["marker" + <%= index %>] = L.marker(<%= insta["coordinates"] %>, {icon: instaIcon}).bindPopup(popupContentsInsta['popup' + <%= index %>]).addTo(map);
+		<% end %>
 
 
 		function goTo($el) {
-			console.log("hello from goTo")
 		    $('html, body').animate({
 		        scrollTop: $el.offset().top + 'px'
 		    }, 'slow');

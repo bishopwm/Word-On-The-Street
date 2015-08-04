@@ -16,7 +16,8 @@ class TwitterSearcher
 
 	def get_twitter_results(twitter_term, latitude, longitude)
 		recent_tweets = []
-		@client.search("#{twitter_term} -rt", result_type: "recent" ).take(3).each do |tweet|
+		@client.search("#barcelona #{twitter_term[:term]}", result_type: "recent" ).take(3).each do |tweet|
+												#geocode: "#{latitude}, #{longitude},2mi"
 		  recent_tweets << {
 		  	:tweet => tweet.text
 		  }
