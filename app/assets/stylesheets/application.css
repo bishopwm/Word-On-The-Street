@@ -21,13 +21,21 @@
 
 }
 
-#map { 
-	height: 500px;
-	margin-top: 100px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-bottom: 10px;
+body {
+	background-color: #B4D2DF;
+}
 
+#map { 
+	height: 600px;
+	margin-top: 100px;
+
+	margin-bottom: 10px;
+	border-radius: 20px;
+
+ }
+
+ .insta-map-wrapper {
+ 	margin-top: 0;
  }
 
 .insta-pic {
@@ -35,7 +43,7 @@
 }
 
 .instas-list {
-	height: 430px;
+	height: 530px;
 	overflow: auto;
 }
 
@@ -44,7 +52,7 @@
 }
 
 .insta-bar {
-	height: 500px;
+	height: 600px;
 	width: 350px;
 	float: right;
 }
@@ -59,6 +67,7 @@
 	background-size: auto 95%;
 	background-repeat: no-repeat;
 	z-index: -1;
+	
 }
 
 .hero-hugs {
@@ -86,10 +95,25 @@
 	
 }
 
+.sign-up {
+	margin-left: 80px;
+	margin-bottom: 200px;
+	text-align: center;
+}
+
+.actions {
+	margin-top: 12px;
+	margin-bottom: 10px;
+}
+
 .footer {
 	text-align: center;
+	padding: 4px;
+	padding-top: 7px;
+	width: 100%;
 	z-index: 1;
-	margin-bottom: 0;
+	margin-bottom: -10px;
+	background-color: white;
 }
 .nav-bar {
 	width: 100%;
@@ -99,9 +123,14 @@
 	margin-top: 0;
 	z-index: 1; 
 	font-family: 'Cabin', sans-serif;
+	background-color: white;
 }
 
 .list-item {
 	margin-right: 3em;
 	display: inline;
+}
+
+.well {
+	background-color: white;
 }
