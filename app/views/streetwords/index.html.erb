@@ -54,10 +54,6 @@
 
 		map.scrollWheelZoom.disable();
 
-		var communityMarkers = {}
-		
-		
-		
 
 		var communityIcon = L.icon({
 			iconUrl: '/assets/community.png',
@@ -78,7 +74,8 @@
 		currentLocationMarker.bindPopup(currentLocationContent);
 		var currentLocationContent = '<h4>Your Current Location</h4>'
 
-		//Yelp Content
+
+		var communityMarkers = {}
 		var communityPopupContents = {}
 
 		<% @streetwords.each_with_index do |streetword, index| %>
