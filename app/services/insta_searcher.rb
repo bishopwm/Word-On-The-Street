@@ -25,8 +25,7 @@ class InstaSearcher
 		  	'coordinates' => [datum['location']['latitude'],datum['location']['longitude']],
 		  	'location_name' => datum['location']['name']
 		  }
-		end
-
+		end if content_request["data"]
 		@insta_contents
 
 	end
