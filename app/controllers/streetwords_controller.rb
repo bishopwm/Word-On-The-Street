@@ -2,7 +2,7 @@ class StreetwordsController < ApplicationController
 	def index
 		@user = current_user
 		@streetwords = @user.streetwords
-		@streetword = @user.streetwords.new
+		# @streetword = @user.streetwords.new
 	end
 
 	def create

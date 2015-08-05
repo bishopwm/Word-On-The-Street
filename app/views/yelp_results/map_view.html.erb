@@ -53,23 +53,17 @@
 	<div class="well twitter-bar">
 		<ul class="tweets-list"><img src="/assets/twitter-word.png" width="160px" class="twitter-word"><hr />
 			<% @tweets.each do |tweet_hash| %>
-		<!-- 	<div class="well tweet-well"> -->
 			<li class="twitter-list-item">
 				<img src="/assets/twitter.png" width="30px">
 				<%= tweet_hash[:tweet] %>
 			</li>
 			<hr />
-			<br />
-	<!-- 		</div> -->
-			
+			<br />			
 			<% end %>
-			
 		<ul>
-
-
 	</div>
 		<div id="map"></div>
-</div>
+	</div>
 
 <script type="text/javascript">
 
