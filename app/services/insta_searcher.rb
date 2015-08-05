@@ -23,7 +23,7 @@ class InstaSearcher
 		  	'location_name' => insta_info['location']['name']
 		  }
 	
-		end if content_request["data"]
+		end #if content_request["data"]
 		@insta_contents
 		fail
 
