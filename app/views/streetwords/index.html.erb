@@ -1,29 +1,20 @@
-<h2>My Community</h2>
-
-
-<ul class="streetwords-list">
-	<% @streetwords.each do |streetword| %>
-		<li class="streetwords-list-item"><strong>Name: </strong>
-			<%= streetword.name %>
-		</li>
-		<li class="streetwords-list-item"><strong>Latitude: </strong>
-			<%= streetword.latitude %>
-		</li>
-		<li class="streetwords-list-item"><strong>Longitude: </strong>
-			<%= streetword.longitude %>
-		</li>
-		<li class="streetwords-list-item"><strong>address: </strong>
-			<%= streetword.address %>
-		</li>
-		<li class="streetwords-list-item"><strong>User ID: </strong>
-			<%= streetword.user_id %>
-		</li>
-		<br />
-
-
-	<% end %>
-</ul>
-
+<div class="well my_community_well">
+<div class="container my_comm">
+<h2>My Communities</h2>
+	<ul class="streetwords-list">
+		<% @streetwords.each do |streetword| %>
+			<li class="streetwords-list-item"><strong>Name: </strong>
+				<%= streetword.name %>
+			</li>
+			<li class="streetwords-list-item"><strong>Address: </strong>
+				<%= streetword.address.to_s.gsub!(/\W/,' ') %>
+			</li>
+			<br />
+		<% end %>
+	</ul>
+</div>
+</div>
+<hr />
 <div id="map"></div>
 
 <style>

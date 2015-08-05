@@ -34,18 +34,7 @@ $(function () {
 	function addLocationValueToForm () {
 	  document.getElementById('lat').value = window.localStorage.getItem("latitude");
 	  document.getElementById('lon').value = window.localStorage.getItem("longitude");
-	}
-
-	$('#new-search').bind('keyup', function() {
-	    if(allFilled()) $('#submit').removeAttr('disabled');
-	});
-
-	function allFilled() {
-	    var filled = true;
-	    $('.form-group input').each(function() {
-	        if($(this).val() == '') filled = false;
-	    });
-	    return filled;
+	  $('#submit').removeAttr('disabled');
 	}
 
 })

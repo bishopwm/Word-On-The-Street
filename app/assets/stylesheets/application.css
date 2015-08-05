@@ -22,28 +22,61 @@
 }
 
 body {
-	background-color: #B4D2DF;
+	/*background-color: #B4D2DF;*/
 }
 
 #map { 
 	height: 600px;
 	margin-top: 100px;
-
 	margin-bottom: 10px;
 	border-radius: 20px;
 
  }
 
- .insta-map-wrapper {
+.tweet-header {
+	margin-left: 300px;
+}
+
+.tweets-list {
+	height: 550px;
+	overflow-y: scroll;
+	/*overflow-x: hidden;*/
+
+}
+
+.tweet-well {
+	width: 50px;
+	background-color: white;
+
+}
+
+.well.new-search {
+	width:100%;
+}
+
+.why-section {
+	text-align: center;
+}
+
+.logo-list {
+	list-style-type: none;
+}
+
+.logo-list-item {
+	display: inline;
+	margin-right: 50px;
+}
+
+/* .insta-map-wrapper {
  	margin-top: 0;
- }
+ }*/
 
 .insta-pic {
 	width: 70%;
 }
 
 .instas-list {
-	height: 530px;
+	height: 580px;
 	overflow: auto;
 }
 
@@ -52,11 +85,40 @@ body {
 }
 
 .insta-bar {
+	margin-top: 100px;
 	height: 600px;
-	width: 350px;
+	width: 250px;
 	float: right;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
+
+.twitter-bar {
+	margin-top: 100px;
+	height: 600px;
+	width: 250px;
+	float: left;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.well.insta-bar {
+	border-radius: 6px;
+}
+
+.well.twitter-bar {
+	border-radius: 6px;
+}
+
+.twitter-list-item {
+	list-style-type: none;
+	width: 100px;
+}
+
+.tweet-well {
+	width: 250px;
+}
 
 
 .hero-unit {
@@ -101,6 +163,18 @@ body {
 	text-align: center;
 }
 
+.log-in {
+	margin-left: 80px;
+	margin-bottom: 200px;
+	text-align: center;
+}
+
+.forgot {
+	margin-left: 80px;
+	margin-bottom: 200px;
+	text-align: center;
+}
+
 .actions {
 	margin-top: 12px;
 	margin-bottom: 10px;
@@ -131,6 +205,18 @@ body {
 	display: inline;
 }
 
-.well {
-	background-color: white;
+.my_community_well {
+	width: 800px;
+	margin-left: 250px;
+}
+
+.my-comm {
+	text-align: center;
+	margin-left: 80px;
+	font-family: 'Cabin', sans-serif;
+
+}
+
+.streetwords-list {
+	margin-left: -40px;
 }

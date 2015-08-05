@@ -28,12 +28,12 @@
 					<%= link_to "Sign-in", new_user_session_path %>
 					<% end %>
 		        	</a></li>
-		        <li class="list-item login-nav-bar pull-right">
-		        	<%= form_tag new_user_session_path do %>
-					Email <%= text_field_tag :email %>
-					Password <%= password_field_tag :password %>
-					<%= submit_tag "Login" %>
-					<% end %>
+		        <li class="list-item  pull-right">
+		        	<% if current_user %>
+		        		<p><strong>Signed in as <%= current_user[:email] %></strong></p>
+		        	<% else %>
+		        		<a href="#"><%= link_to "Word on the What?", new_user_registration_path %></a>
+		        	<% end %>
 		        </li>
 	     	  </ul>
 
