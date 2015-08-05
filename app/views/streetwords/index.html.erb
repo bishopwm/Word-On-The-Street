@@ -5,10 +5,11 @@
 		<% @streetwords.each do |streetword| %>
 			<li class="streetwords-list-item"><strong>Name: </strong>
 				<%= streetword.name %>
-			</li>
+			</li><br />
 			<li class="streetwords-list-item"><strong>Address: </strong>
 				<%= streetword.address.to_s.gsub!(/\W/,' ') %>
 			</li>
+			<br />
 			<br />
 		<% end %>
 	</ul>
