@@ -24,15 +24,13 @@
 		        <li class="list-item"><a href="#">
 		        	<% if current_user %>
 		        		<%= link_to "Sign-out", destroy_user_session_path, :method => :delete %>
-					<% else %>
-					<%= link_to "Sign-in", new_user_session_path %>
 					<% end %>
 		        	</a></li>
 		        <li class="list-item  pull-right">
 		        	<% if current_user %>
 		        		<p><strong>Signed in as <%= current_user[:email] %></strong></p>
 		        	<% else %>
-		        		<a href="#"><%= link_to "Word on the What?", new_user_registration_path %></a>
+		        	<%= link_to "Sign-in", new_user_session_path %>
 		        	<% end %>
 		        </li>
 	     	  </ul>

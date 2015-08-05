@@ -14,7 +14,8 @@ class YelpSearcher
 				:address => business.location.display_address,
 				:name => business.name,
 				:url => business.url,
-				:rating => business.rating
+				:rating => business.rating,
+				:distance => business.distance
 			}
 
 		end

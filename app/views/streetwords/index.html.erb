@@ -1,6 +1,6 @@
 <div class="well my_community_well">
 <div class="container my_comm">
-<h2>My Communities</h2>
+<h2>My Community</h2>
 	<ul class="streetwords-list">
 		<% @streetwords.each do |streetword| %>
 			<li class="streetwords-list-item"><strong>Name: </strong>
@@ -15,7 +15,6 @@
 	</ul>
 </div>
 </div>
-<hr />
 <div id="map"></div>
 
 <style>
@@ -63,8 +62,9 @@
 		})
 
 		var currentLocationMarker = L.marker(currentLocation, {icon: currentLocationIcon}).addTo(map);
+		var currentLocationContent = '<h4>You are here</h4>'
 		currentLocationMarker.bindPopup(currentLocationContent);
-		var currentLocationContent = '<h4>Your Current Location</h4>'
+
 
 
 		var communityMarkers = {}

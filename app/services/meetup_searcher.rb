@@ -17,7 +17,9 @@ class MeetupSearcher
 		  @meetup_events << {
 		  	'event' => result['name'],
 		  	'address' => result['venue']['address_1'],
-		  	'coordinates' => [result['venue']['lat'], result['venue']['lon']]
+		  	'coordinates' => [result['venue']['lat'], result['venue']['lon']],
+		  	'who' => result['group']['who'],
+		  	'url' => result['event_url']
 		  }
 		end
 

@@ -39,13 +39,9 @@
 			<li class="insta-list-item">
 				<img src="<%= insta['image']['url'] %>" class="insta-pic">
 			</li>
-			<li class="insta-list-item"><strong>Hashtags: </strong>
-				<%= insta['hashtag'].to_s.gsub!(/\W/,' ') %>
-			</li>
-
-			<li class="insta-list-item"><strong>Location: </strong>
+			<li class="insta-list-item">
 				<%= insta['location_name'] %>
-			</li>
+			</li><br />
 			
 				<% end %>
 		</ul>
@@ -126,15 +122,10 @@
 
 		<% @businesses.each_with_index do |business, index| %>
 			<% if current_user %>
-				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: </strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p><p><strong>Website </strong><br /><a href='<%= business[:url].to_s.html_safe %>' target='_blank'>Visit Business Page</a></p><p><strong>Rating </strong><br /><%=escape_javascript business[:rating].to_s %></p><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= business[:name] %>' name='streetword[name]'><input type='hidden' value='<%= business[:latitude] %>' name='streetword[latitude]' ><input type='hidden' value='<%= business[:longitude] %>' name='streetword[longitude]'><input type='hidden' value='<%= business[:address] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
+				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: </strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p><p><strong>Website </strong><br /><a href='<%= business[:url].to_s.html_safe %>' target='_blank'>Visit Business Page</a></p><p><strong>Rating </strong><br /><%=escape_javascript business[:rating].to_s %></p><p><strong>Distance from me: </strong><br /><%=escape_javascript business[:distance].to_s %><strong> meters</strong></p><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= business[:name] %>' name='streetword[name]'><input type='hidden' value='<%= business[:latitude] %>' name='streetword[latitude]' ><input type='hidden' value='<%= business[:longitude] %>' name='streetword[longitude]'><input type='hidden' value='<%= business[:address] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
 			<% else %>
-				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: </strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p><p><strong>Website </strong><br /><a href='<%= business[:url].to_s.html_safe %>' target='_blank'>Visit Business Page</a></p><p><strong>Rating </strong><br /><%=escape_javascript business[:rating].to_s %></p>"
+				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: </strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ') %></p><p><strong>Website </strong><br /><a href='<%= business[:url].to_s.html_safe %>' target='_blank'>Visit Business Page</a></p><p><strong>Rating </strong><br /><%=escape_javascript business[:rating].to_s %></p><p><strong>Distance from me: </strong><br /><%=escape_javascript business[:distance].to_s %><strong> meters</strong></p>"
 			<% end %>
-
-		// document.getElementById('address').value = <%= business[:address] %>;
-		// document.getElementById('name').value = <%= business[:name] %>;
- 				
-
 			markersYelp["marker" + <%= index %>] = L.marker(<%= business[:coordinates] %>, {icon: yelpIcon}).bindPopup(popupContentsYelp['popup' + <%= index %>]).addTo(map);
 		<% end %>
 
@@ -144,7 +135,11 @@
 		var popupContentsMeetup = {}
 
 		<% @meetups.each_with_index do |meetup, index| %>
-			popupContentsMeetup["popup" + <%= index %>] = "<h3><%=escape_javascript meetup['event'] %></h3><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= meetup['event'] %>' name='streetword[name]'><input type='hidden' value='<%= meetup['coordinates'][0] %>' name='streetword[latitude]' ><input type='hidden' value='<%= meetup['coordinates'][1] %>' name='streetword[longitude]'><input type='hidden' value='<%= meetup['address'] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
+			<% if current_user %>
+			popupContentsMeetup["popup" + <%= index %>] = "<h3><%=escape_javascript meetup['event'] %></h3><p><strong>Address: </strong><br /><%= escape_javascript meetup['address'] %></p><p><%= escape_javascript meetup['venue'] %></p><p><strong>Who is this for?</strong><br /><%= escape_javascript meetup['who'].to_s %></p><p><strong>Website </strong><br /><a href='<%= meetup['url'].to_s.html_safe %>' target='_blank'>Visit Event Page</a></p><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= meetup['event'] %>' name='streetword[name]'><input type='hidden' value='<%= meetup['coordinates'][0] %>' name='streetword[latitude]' ><input type='hidden' value='<%= meetup['coordinates'][1] %>' name='streetword[longitude]'><input type='hidden' value='<%= meetup['address'] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
+			<% else %>
+				popupContentsMeetup["popup" + <%= index %>] = "<h3><%=escape_javascript meetup['event'] %></h3><p><strong>Address: </strong><br /><%= escape_javascript meetup['address'] %></p><p><%= escape_javascript meetup['venue'] %></p><p><strong>Who is this for?</strong><br /><%= escape_javascript meetup['who'].to_s %></p><p><strong>Website </strong><br /><a href='<%= meetup['url'].to_s.html_safe %>' target='_blank'>Visit Event Page</a></p>"
+			<% end %>
 			markersMeetup["marker" + <%= index %>] = L.marker(<%= meetup["coordinates"] %>, {icon: meetupIcon}).bindPopup(popupContentsMeetup['popup' + <%= index %>]).addTo(map);
 		<% end %>
 

@@ -2,11 +2,9 @@ class StreetwordsController < ApplicationController
 	def index
 		@user = current_user
 		@streetwords = @user.streetwords
-		# @streetword = @user.streetwords.new
 	end
 
 	def create
-		# fail
 		@streetword = current_user.streetwords.new(street_word_params)
 		if @streetword.valid?
 			@streetword.save
@@ -30,7 +28,7 @@ class StreetwordsController < ApplicationController
 	private
 
   	def street_word_params
-    	params.require(:streetword).permit(:name, :latitude, :longitude, :address)
+    	params.require(:streetword).permit(:name, :latitude, :longitude, :address, :distance, :who, :url, :distance, :rating )
   	end
 
 end
