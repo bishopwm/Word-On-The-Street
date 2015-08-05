@@ -73,7 +73,7 @@
 
 		var currentLocationIcon = L.icon({
 		    iconUrl: '/assets/star.png',
-		    iconSize: [70, 40],
+		    iconSize: [40, 50],
 		    iconAnchor: [22, 64],
 		    popupAnchor: [-3, -76]	
 		});
@@ -109,7 +109,7 @@
 
 		<% @businesses.each_with_index do |business, index| %>
 			<% if current_user %>
-				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0] %></p><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= business[:name] %>' name='streetword[name]'><input type='hidden' value='<%= business[:latitude] %>' name='streetword[latitude]' ><input type='hidden' value='<%= business[:longitude] %>' name='streetword[longitude]'><input type='hidden' value='<%= business[:address] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
+				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0].to_s %></p><p><form method='POST' action='/streetwords'><input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'><input type='hidden' value='<%= business[:name] %>' name='streetword[name]'><input type='hidden' value='<%= business[:latitude] %>' name='streetword[latitude]' ><input type='hidden' value='<%= business[:longitude] %>' name='streetword[longitude]'><input type='hidden' value='<%= business[:address] %>' name='streetword[address]'><button type='submit' class='btn btn-default'>Save</button></form></p>"
 			<% else %>
 				popupContentsYelp["popup" + <%= index %>] = "<h3><%= escape_javascript business[:name].to_s %></h3><p><strong>Address: <br /></strong><%=escape_javascript business[:address].to_s.gsub!(/\W/,' ')%></p><p><strong>Coordinates: <br /></strong><%=escape_javascript business[:coordinates].to_s%></p><p><strong>Recent Tweets: <br /></strong><%=escape_javascript @tweets[0].to_s.gsub!(/\W/,' ') %></p>"
 			<% end %>
@@ -135,8 +135,15 @@
 		var popupContentsInsta = {}
 
 		<% @instas.each_with_index do |insta, index| %>
-			popupContentsInsta["popup" + <%= index %>] = "<p><img src='<%=escape_javascript insta['image']['url']%>'class='instapopup'></p><p>Hashtags: <%=escape_javascript insta['hashtag'].to_s.gsub!(/\W/,' ') %></p><p>Location: <%=escape_javascript insta['location_name'] %></p>"
-			markersInsta["marker" + <%= index %>] = L.marker(<%= insta["coordinates"] %>, {icon: instaIcon}).bindPopup(popupContentsInsta['popup' + <%= index %>]).addTo(map);
+			var popupString = "<p><img width='50px' src='<%=escape_javascript insta['image']['url']%>'class='instapopup'></p>"
+			<% if insta['hashtag'].length > 0 %>
+				popupString += "<p>Hashtags: <%=escape_javascript insta['hashtag'].to_s.gsub!(/\W/,' ') %></p>"
+			<% end %>
+			<% if insta['location_name'] %>
+				popupString += "<p>Location: <%=escape_javascript insta['location_name'] %></p>"
+			<% end %>
+			popupContentsInsta["popup" + <%= index %>] = popupString
+			markersInsta["marker" + <%= index %>] = L.marker(<%= insta["coordinates"] %>, {icon: instaIcon}).bindPopup(popupContentsInsta['popup' + <%= index %>], {minWidth: 100}).addTo(map);
 		<% end %>
 
 

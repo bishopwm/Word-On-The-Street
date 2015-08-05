@@ -28,7 +28,6 @@ class YelpResultsController < ApplicationController
     new_search_insta = InstaSearcher.new
     @instas = new_search_insta.get_insta_results(coordinates, parameters)
 
-
     render :map_view
 
   end
