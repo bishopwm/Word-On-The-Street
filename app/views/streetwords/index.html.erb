@@ -8,9 +8,15 @@
 			</li><br />
 			<li class="streetwords-list-item"><strong>Address: </strong>
 				<%= streetword.address.to_s.gsub!(/\W/,' ') %>
-			</li>
+			</li><br />
+			<li class="streetwords-list-item"><strong>Search Tag: </strong>
+				<%= streetword.search_term %>
+			</li><br />
+			<% if current_user %>
+  			 <%= link_to "Delete", streetword_path(streetword), :method => :delete, type: "button", class: "btn community" %>
+			<%end%>
 			<br />
-			<br /> 
+			<br />
 		<% end %>
 	</ul>
 </div>

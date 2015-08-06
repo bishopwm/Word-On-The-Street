@@ -1,7 +1,10 @@
 class StreetwordsController < ApplicationController
+
 	def index
 		@user = current_user
+		@streetword = Streetword.find_by(id: params[:id])
 		@streetwords = @user.streetwords
+
 	end
 
 	def create
@@ -17,6 +20,7 @@ class StreetwordsController < ApplicationController
 	def destroy
 		@user = current_user
 		@streetword = Streetword.find_by(id: params[:id]).try(:destroy)
+		redirect_to '/streetwords'
 	end
 
 	def add_community_to_map
@@ -28,7 +32,7 @@ class StreetwordsController < ApplicationController
 	private
 
   	def street_word_params
-    	params.require(:streetword).permit(:name, :latitude, :longitude, :address, :distance, :who, :url, :distance, :rating )
+    	params.require(:streetword).permit(:name, :latitude, :longitude, :address, :distance, :who, :url, :distance, :rating, :search_term)
   	end
 
 end

@@ -1,6 +1,6 @@
 class YelpResultsController < ApplicationController
-
   def add_search_to_map
+    @search_term = params[:q]
 
   #GENERAL SEARCH
   	parameters = { term: params[:q], limit: 16 }

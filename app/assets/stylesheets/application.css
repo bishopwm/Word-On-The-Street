@@ -33,6 +33,14 @@ body {
 
  }
 
+ .btn.community {
+ 	background-color: maroon;
+	border: black;
+	color: white;
+	border-style: solid;
+	border-width: 1px;
+ }
+
 .tweet-header {
 	margin-left: 300px;
 }
