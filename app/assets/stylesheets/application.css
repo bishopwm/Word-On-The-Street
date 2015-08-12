@@ -37,6 +37,10 @@
 
  }
 
+ #main-search {
+ 	margin-left: 120px;
+ }
+
  .btn.community {
  	background-color: maroon;
 	border: black;
@@ -172,6 +176,9 @@
 #the-search-mid {
 	margin-left: 120px;
 }
+
+
+
 #submit {
 	margin-left: 120px;
 }
