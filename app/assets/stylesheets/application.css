@@ -21,6 +21,12 @@
 
 }
 
+.avatar{
+	width: 15%;
+	border-radius: 10px;
+	margin-left: 10px;
+}
+
 /*body {
 	background-image: url("/assets/newyork.jpg");
 	background-size: auto 75%;
@@ -246,7 +252,7 @@
 	height: 30px;
 	list-style-type: none;
 	padding-top: 1em;
-	padding-bottom: 2em;
+	padding-bottom: 3em;
 	margin-top: 6px;
 	z-index: 1; 
 	font-family: 'Cabin', sans-serif;

@@ -1,7 +1,18 @@
 source 'https://rubygems.org'
 
+gem 'therubyracer'
+
+gem 'omniauth-twitter'
+
+gem 'omniauth-facebook'
+
+gem 'omniauth'
+
+gem 'omniauth-digitalocean'
 
 gem 'puma'
+
+gem 'oauth2'
 
 gem 'twitter'
 

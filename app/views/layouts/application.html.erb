@@ -28,7 +28,7 @@
 		        	</a></li>
 		        <li class="list-item  pull-right">
 		        	<% if current_user %>
-		        		<p><strong>Signed in as <%= current_user[:email] %></strong></p>
+		        		<p><strong>Signed in as <%= current_user[:email] %></strong><%= image_tag(current_user[:image], :class => "avatar") %></p>
 		        	<% else %>
 		        	<%= link_to "Sign-in", new_user_session_path %>
 		        	<% end %>

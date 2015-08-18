@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'someone@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -236,6 +236,8 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   # ==> OmniAuth
+  config.omniauth :twitter, "ODRzLY9DU971E7T1X1sYsM0Pa", "mphneG21WlK2vmxcJ8bjwmfwTunFs8oqBytebQ6fyYJBewOn12"
+  # config.omniauth :facebook, "717127095084670", "f8d720916a1dd1562e084f9701052005", {:scope => 'email, read_stream, read_friendlists, friends_likes, friends_status, offline_access'}
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
