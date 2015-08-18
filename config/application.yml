@@ -25,8 +25,6 @@ yelp_token: '8cZHAf-EBylfijGjA2CrtLAEnJN7Nv3i'
 yelp_token_secret: '_3P8F7jpsslWE3j1aqfw-6cZON8'
 
 ## Twitter
-twitter_access_token: '54758449-Cs2OaKnNSqtNqTqtMPpixfLE4nLzMYC047J7N60nt'
-twitter_access_token_secret: 'AnGRpYNCeF5R7NuHQXLOKYIScrFIqT9vAms7xTp4Ckfsw'
 twitter_consumer_key: 'ODRzLY9DU971E7T1X1sYsM0Pa'
 twitter_consumer_secret: 'mphneG21WlK2vmxcJ8bjwmfwTunFs8oqBytebQ6fyYJBewOn12'
 

@@ -15,16 +15,17 @@ class User < ActiveRecord::Base
   validates_length_of    :password, :within => Devise.password_length, :allow_blank => true
 
   def self.from_omniauth(auth)
-      where(provider: auth.provider, uid: auth.uid, name: auth.info.nickname, image: auth.info.image).first_or_create do |user|
+      where(provider: auth.provider, uid: auth.uid, name: auth.info.nickname, image: auth.info.image, access_token: auth.credentials.token, access_secret: auth.credentials.secret).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
         user.name = auth.info.nickname
         user.image = auth.info.image
         user.email = auth.info.email || auth.info.nickname
+        user.access_token = auth.credentials.token
+        user.access_secret = auth.credentials.secret
         user.password = Devise.friendly_token[0,20]
       end
   end
-
 
   def email_required?
   	super && provider.blank?
