@@ -27,6 +27,12 @@
 	margin-left: 10px;
 }
 
+/*.container.log-in {
+	background-color: gray;
+	border-radius: 20px;
+	z-index: 1;
+}*/
+
 /*body {
 	background-image: url("/assets/newyork.jpg");
 	background-size: auto 75%;
