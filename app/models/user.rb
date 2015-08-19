@@ -5,8 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :omniauthable, :omniauth_providers => [:twitter]
   validates :email,
-            :presence => true, 
-            :uniqueness => {:case_sensitive => false, :scope=>:accont_id }, 
+            :presence => true,  
             :if => 'provider.blank?'
   validates_uniqueness_of    :email,     :case_sensitive => false, :allow_blank => true, :if => :email_changed?
   validates_format_of    :email,    :with  => Devise.email_regexp, :allow_blank => true, :if => :email_changed?
