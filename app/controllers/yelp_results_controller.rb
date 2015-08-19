@@ -23,6 +23,10 @@ class YelpResultsController < ApplicationController
   # TWITTER
     new_search_twitter = TwitterSearcher.new
     @tweets = new_search_twitter.get_twitter_results(twitter_term, latitude, longitude)
+    # @timeline = new_search_twitter.prepare_access_token(oauth_token, oauth_token_secret)
+    oauth_token = User.last.access_token
+    oauth_token_secret = User.last.access_secret
+
 
   # INSTAGRAM
     new_search_insta = InstaSearcher.new

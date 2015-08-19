@@ -53,6 +53,11 @@
  	margin-left: 120px;
  }
 
+ #address-search {
+ 	margin-left: 120px;
+ 	margin-top: 5px;
+ }
+
  .btn.community {
  	background-color: maroon;
 	border: black;
@@ -262,7 +267,7 @@
 	margin-top: 6px;
 	z-index: 1; 
 	font-family: 'Cabin', sans-serif;
-	background-color: white;
+	background-color: #f5f5f5;
 	opacity: 0.8;
 	border-radius: 20px
 }

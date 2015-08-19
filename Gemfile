@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'geocoder'
+
 gem 'therubyracer'
 
 gem 'omniauth-twitter'
