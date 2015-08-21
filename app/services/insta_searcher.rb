@@ -26,4 +26,5 @@ class InstaSearcher
 		@insta_contents
 
 	end
+	
 end

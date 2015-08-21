@@ -1,5 +1,10 @@
 class User < ActiveRecord::Base
   has_many :streetwords
+	
+	# reverse_geocoded_by :latitude, :longitude
+	# after_validation :reverse_geocode 
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -30,6 +35,8 @@ class User < ActiveRecord::Base
   def email_required?
   	super && provider.blank?
   end
+
+
 
 
 end

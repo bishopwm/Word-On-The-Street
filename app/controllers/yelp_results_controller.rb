@@ -10,7 +10,11 @@ class YelpResultsController < ApplicationController
     @longitude = params[:longitude]
     latitude = params[:latitude]
     longitude = params[:longitude]
+
+    city_coordinates = latitude + "," + longitude
   	coordinates = { latitude: @latitude, longitude: @longitude }
+    user_city = Geocoder.search(city_coordinates)[0].data["address_components"][2]["long_name"]
+    
 
   # YELP
   	new_search = YelpSearcher.new
@@ -34,7 +38,7 @@ class YelpResultsController < ApplicationController
 
   # FACBOOK
     new_search_facebook = FacebookSearcher.new
-    @facebook_events = new_search_facebook.get_facebook_results
+    @facebook_events = new_search_facebook.get_facebook_results(user_city, parameters)
 
 
     render :map_view
