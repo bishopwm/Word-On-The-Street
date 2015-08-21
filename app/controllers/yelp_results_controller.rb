@@ -14,7 +14,7 @@ class YelpResultsController < ApplicationController
     city_coordinates = latitude + "," + longitude
   	coordinates = { latitude: @latitude, longitude: @longitude }
     user_city = Geocoder.search(city_coordinates)[0].data["address_components"][2]["long_name"]
-    
+
 
   # YELP
   	new_search = YelpSearcher.new
@@ -26,7 +26,7 @@ class YelpResultsController < ApplicationController
 
   # TWITTER
     new_search_twitter = TwitterSearcher.new
-    @tweets = new_search_twitter.get_twitter_results(twitter_term, latitude, longitude)
+    @tweets = new_search_twitter.get_twitter_results(twitter_term, latitude, longitude, user_city)
     # @timeline = new_search_twitter.prepare_access_token(oauth_token, oauth_token_secret)
     oauth_token = User.last.access_token
     oauth_token_secret = User.last.access_secret

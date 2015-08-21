@@ -4,8 +4,8 @@ class FacebookSearcher
 		query = parameters[:term]
 	  current_city = user_city 
 
-		oauth_token = "CAAKMOSnC5n4BAFHtYZBqOojCh4Q6WKrfdppg8Rn4KJykAQVLdSlH7EtZA2Wf2rZBrVnoIB8UoVxEpBxPSKBrUbwiPZBsf6rS4ND8rorYeIiBURVjFkRbNVUrkRqzqW8NvPzOsnxiHwTFBTUZCXIy2yaMZCGqeIeGYqbHdlZAG39XaSLcSu1YZBOieh6BZBfA1wogZD"
-	 	app_secret = "f8d720916a1dd1562e084f9701052005"
+	  	oauth_token = User.last.access_token
+	 	app_secret = ENV["facebook_app_secret"]
 
 	 	@facebook_events = []
 
