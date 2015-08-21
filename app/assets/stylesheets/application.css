@@ -22,9 +22,9 @@
 }
 
 .avatar{
-	width: 15%;
-	border-radius: 10px;
-	margin-left: 10px;
+	width: 10%;
+	border-radius: 8px;
+	margin-left: 6px;
 }
 
 /*.container.log-in {
@@ -275,6 +275,13 @@
 .list-item {
 	margin-right: 3em;
 	display: inline;
+}
+
+.my_profile {
+	width: 450px;
+	margin-left: 250px;
+	opacity: 0.8;
+	border-radius: 40px;
 }
 
 .my_community_well {

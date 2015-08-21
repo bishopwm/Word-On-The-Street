@@ -16,7 +16,7 @@
 		      <ul class="nav-bar">
 		        <li class="list-item"><a href="#"><%= link_to "Home", '/' %></a></li>
 		        <% if current_user %>
-		        <li class="list-item"><a href="#"><%= link_to "My Community", streetwords_path %></a></li>
+		        <li class="list-item"><a href="#"><%= link_to "My Hood", streetwords_path %></a></li>
 		        <% end %>
 				<% if current_user.nil? %>
 		        <li class="list-item"><a href="#"><%= link_to "Sign Up", new_user_registration_path %></a></li>
@@ -28,7 +28,7 @@
 		        	</a></li>
 		        <li class="list-item  pull-right">
 		        	<% if current_user %>
-		        		<p><strong>Signed in as <%= current_user[:email] %></strong><%= image_tag(current_user[:image], :class => "avatar") %></p>
+		        		<p><strong>Signed in as <%= current_user[:name] %></strong><%= image_tag(current_user[:image], :class => "avatar") %></p>
 		        	<% else %>
 		        	<%= link_to "Sign-in", new_user_session_path %>
 		        	<% end %>

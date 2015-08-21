@@ -32,6 +32,11 @@ class YelpResultsController < ApplicationController
     new_search_insta = InstaSearcher.new
     @instas = new_search_insta.get_insta_results(coordinates, parameters)
 
+  # FACBOOK
+    new_search_facebook = FacebookSearcher.new
+    @facebook_events = new_search_facebook.get_facebook_results
+
+
     render :map_view
 
   end

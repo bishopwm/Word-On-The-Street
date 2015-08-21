@@ -15,11 +15,12 @@ class User < ActiveRecord::Base
 
 
   def self.from_omniauth(auth)
-  	# email_response = HTTParty.get("https://graph.facebook.com/#{auth.uid}/fields=email")
-      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      where(provider: auth.provider, uid: auth.uid, image: auth.info.image, name: auth.info.name).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
         user.email = auth.info.email
+        user.image = auth.info.image
+        user.name = auth.info.name
         user.access_token = auth.credentials.token
         user.access_secret = auth.credentials.secret
         user.password = Devise.friendly_token[0,20]
@@ -29,5 +30,6 @@ class User < ActiveRecord::Base
   def email_required?
   	super && provider.blank?
   end
+
 
 end

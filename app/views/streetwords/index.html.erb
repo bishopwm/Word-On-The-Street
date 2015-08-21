@@ -1,6 +1,14 @@
+<div class="well my_profile">
+	<h2>Hey, <%= current_user[:name] %>!</h2>
+	<p>
+		<%= current_user[:email] %>
+	</p>
+
+	
+</div>
 <div class="well my_community_well">
 <div class="container my_comm">
-<h2>My Community</h2>
+<h2>My Hood</h2>
 	<ul class="streetwords-list">
 		<% @streetwords.each do |streetword| %>
 			<li class="streetwords-list-item"><strong>Name: </strong>

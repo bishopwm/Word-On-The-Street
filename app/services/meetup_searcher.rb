@@ -1,5 +1,3 @@
-
-
 class MeetupSearcher
 
 	def get_meetup_results(coordinates, parameters)
