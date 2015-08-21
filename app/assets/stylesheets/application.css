@@ -66,6 +66,10 @@
 	border-width: 1px;
  }
 
+.fb-events-list {
+	list-style-type: none;
+}
+
 .tweet-header {
 	margin-left: 300px;
 }

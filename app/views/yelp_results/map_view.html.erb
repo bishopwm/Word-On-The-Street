@@ -22,6 +22,19 @@
 
 </div>
 
+<div class="well facebook-events">
+		<ul class="fb-events-list"><img src="/assets/facebook.png" width="160px" class="facebook-event-logo"><br /><br />
+			<% @facebook_events.each do |facebook_event| %>
+			<li class="facebook-list-item">
+				<%= facebook_event['name'] %>
+			</li>
+			<li class="facebook-list-item">
+				<%= facebook_event['id'] %>
+			</li><br />
+				<% end %>
+		</ul>
+</div>
+
 
 </div>
 
