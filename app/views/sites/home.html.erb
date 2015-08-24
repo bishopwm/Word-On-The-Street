@@ -1,26 +1,50 @@
 <link href='https://fonts.googleapis.com/css?family=Cabin:400,600' rel='stylesheet' type='text/css'>
+
 <!-- <div class="whirl"> -->
 
 	<div class="hero-unit">
-<!-- 		<div class="hero-hugs"> -->
-			<!-- <div class="hero-hugs-child"> -->
-			  
 			  <p class="hero-text">
 				What's the<br />Word On The Street?
 			  		<form action="/map" class="main-search-form">
 					  <div class="form-group col-lg-10">
 					    <input type="text" class="form-control" name="q" id="main-search" placeholder="Enter Nationality">
 					   <!--  <input type="string" class="form-control" name="add" id="address-search" placeholder="Enter City or Address"> -->
+					  </div>
+					   <button type="button" class="btn col-lg-5 btn-default" id="city-button">Wanna Search A Different City?</button>
 					    <input type="hidden" class="form-control" name="latitude" id="lat">
 					    <input type="hidden" class="form-control" name="longitude" id="lon">
-					  </div>
 					  <div>
 					  <button type="submit" class="btn col-lg-10 main btn-default" id="submit" disabled="disabled">Submit</button>
 					  </div>
 					</form>
 		  	  </p>
-		  <!-- </div> -->
-		<!-- </div> -->
+	</div>
+
+	<div class="mymodal modal fade" tabindex="-1">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h3 class="modal-title">Set New Location</h3>
+		      </div>
+		      <div class="modal-body1">  
+		        	<!-- <form class="city-form"> -->
+		        		<div class="form-group col-sm-8">
+						 <!--    <input type="text" class="form-control" name="city" id="city-search" placeholder="Enter City or Zipcode"> -->
+						     <textarea id="txtAddress" rows="3" cols="25"></textarea>
+   								 <br />
+    						<input type="button" onclick="GetLocation()" value="Get Location" />
+
+						   <!-- <button type="submit" class="btn col-sm-10 btn-default" id="city-sub-button">Submit</button> -->
+						</div>
+					<!-- </form> -->
+		    </div>
+		    <div class="modal-city-info">
+		    	<div id="results"></div>
+		    </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</div>
 
 	<div class="container why-section">
@@ -37,15 +61,49 @@
 <!-- </div> -->
 <hr />
 
-
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script type="text/javascript">
 $(function () {
 	if ("geolocation" in navigator) {
 	  getLocation();
 	} else {
 	  alert("Geolocation is not available")
-	}	
-})
+	};
+});
+
+$('#city-button').on('click', function(event){
+	event.preventDefault();
+	$('.mymodal').modal();
+});
+
+// $('.city-form').on('submit', function(event){
+// 	event.preventDefault();
+// 	$('.display-city-paragraph').empty();
+// 	var targetCity = $(this).serialize()
+// 	console.log('Setting city to...' + targetCity);
+// 	window.localStorage.setItem('city-zip', $( this ).serialize());
+// 	$('#results').append('<h3>'+ window.localStorage.getItem("city-zip") + '</h3>');
+// });
+
+
+function GetLocation() {
+    var geocoder = new google.maps.Geocoder();
+    var address = document.getElementById("txtAddress").value;
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+			      document.getElementById('lat').value = latitude
+			      document.getElementById('lon').value = longitude
+        } else {
+            alert("Request failed.")
+          };
+    });
+};
+ 
+
+
 </script>
 
 

@@ -6,7 +6,7 @@ $(function () {
 	window.getLocation = function () {
 	  console.log('Getting location...');
 	  navigator.geolocation.getCurrentPosition(onLocation, onError, options);
-	}
+	};
 
 
 	var options = {
@@ -23,11 +23,11 @@ $(function () {
 	  window.localStorage.setItem('latitude', lat);
 	  window.localStorage.setItem('longitude', lon);
 	  addLocationValueToForm();
-	}
+	};
 
 	function onError(error) {
 	  console.log("Getting location failed: " + error);
-	}
+	};
 
 
 
@@ -35,9 +35,10 @@ $(function () {
 	  document.getElementById('lat').value = window.localStorage.getItem("latitude");
 	  document.getElementById('lon').value = window.localStorage.getItem("longitude");
 	  $('#submit').removeAttr('disabled');
-	}
+	};
 
-})
+});
+
 
 
 
