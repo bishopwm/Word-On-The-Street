@@ -4,18 +4,16 @@
 
 	<div class="hero-unit">
 			  <p class="hero-text">
-				What's the<br />Word On The Street?
+				Word On The Street
 			  		<form action="/map" class="main-search-form">
 					  <div class="form-group col-lg-10">
 					    <input type="text" class="form-control" name="q" id="main-search" placeholder="Enter Nationality">
 					   <!--  <input type="string" class="form-control" name="add" id="address-search" placeholder="Enter City or Address"> -->
 					  </div>
-					   <button type="button" class="btn col-lg-5 btn-default" id="city-button">Wanna Search A Different City?</button>
 					    <input type="hidden" class="form-control" name="latitude" id="lat">
 					    <input type="hidden" class="form-control" name="longitude" id="lon">
-					  <div>
 					  <button type="submit" class="btn col-lg-10 main btn-default" id="submit" disabled="disabled">Submit</button>
-					  </div>
+					  <button type="button" class="btn col-lg-10 btn-default" id="city-button">Wanna Search A Different City?</button>
 					</form>
 		  	  </p>
 	</div>
@@ -31,9 +29,9 @@
 		        	<!-- <form class="city-form"> -->
 		        		<div class="form-group col-sm-8">
 						 <!--    <input type="text" class="form-control" name="city" id="city-search" placeholder="Enter City or Zipcode"> -->
-						     <textarea id="txtAddress" rows="3" cols="25"></textarea>
+						     <textarea id="txtAddress" rows="3" class="form-control" cols="25"></textarea>
    								 <br />
-    						<input type="button" onclick="GetLocation()" value="Get Location" />
+    						<input type="button" onclick="GetLocation()" value="Set Location" class="set-new-location form-control" />
 
 						   <!-- <button type="submit" class="btn col-sm-10 btn-default" id="city-sub-button">Submit</button> -->
 						</div>
@@ -51,7 +49,7 @@
 	<h1> What's the Word on the Street<br />...and why do I care?</h1>
 	<h3>Word on the Street receives a user's geolocation in order to map out all of the 'happenings' in their international community! It's all about accessibility. Get the 'gist' of whatever is going on in your neighborhood or city at a moment's notice: tweets, instagrams, businesses, restaurants, and meetups.</h3>
 	<hr />
-	<p style="font-size: 32px; word-spacing: 40px;">Their World. Your Hood.</p><br />
+	<p style="font-size: 32px; word-spacing: 40px;">Another World. Your Hood.</p><br />
 	<ul class="logo-list">
 		<li class="logo-list-item"><img src="/assets/square-yelp.png" width="50px"></li>
 		<li class="logo-list-item"><img src="/assets/square-meetup.png" width="50px"></li>
@@ -93,13 +91,18 @@ function GetLocation() {
         if (status == google.maps.GeocoderStatus.OK) {
             var latitude = results[0].geometry.location.lat();
             var longitude = results[0].geometry.location.lng();
-            alert("Latitude: " + latitude + "\nLongitude: " + longitude);
+            // alert("Latitude: " + latitude + "\nLongitude: " + longitude);
 			      document.getElementById('lat').value = latitude
 			      document.getElementById('lon').value = longitude
         } else {
             alert("Request failed.")
           };
     });
+    $('.set-new-location').on('click', function(event){
+    	event.preventDefault();
+    	$('.mymodal').modal('hide');
+    });
+   	
 };
  
 
