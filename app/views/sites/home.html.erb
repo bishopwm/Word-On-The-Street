@@ -31,7 +31,7 @@
 						 <!--    <input type="text" class="form-control" name="city" id="city-search" placeholder="Enter City or Zipcode"> -->
 						     <textarea id="txtAddress" rows="3" class="form-control" cols="25"></textarea>
    								 <br />
-    						<input type="button" onclick="GetLocation(); $('#results').append('<h3><strong>Location set to:</strong> ' + $(txtAddress).val() + '</h3>');" value="Set Location" class="set-new-location form-control" />
+    						<input type="button" onclick="GetLocation(); $('#results').append('<h3><strong>Location set to:</strong> ' + $(txtAddress).val() + '</h3>'); var myModal = $('.mymodal');clearTimeout(myModal.data('hideInterval'));myModal.data('hideInterval', setTimeout(function(){myModal.modal('hide');}, 2000));" value="Set Location" class="set-new-location form-control" />
 
 						   <!-- <button type="submit" class="btn col-sm-10 btn-default" id="city-sub-button">Submit</button> -->
 						</div>
@@ -97,7 +97,8 @@ function GetLocation() {
         } else {
             alert("Request failed.")
           };
-    });   	
+    });
+
 };
  
 

@@ -29,11 +29,16 @@
 
 .modal-content {
 	height: 230px;
-	width: 400px;
+	width: 500px;
 	margin-top: 5px;
 	margin: 200px auto;	
 	text-align: center;
+	color: maroon;
 
+}
+
+.modal-title {
+	color: black;
 }
 
 .modal-city-info {
