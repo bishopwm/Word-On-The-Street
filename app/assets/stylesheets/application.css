@@ -15,6 +15,7 @@
  *= require_self
  */
 
+
 * {
 	font-family: 'Cabin', sans-serif;
 	font-size: 16px;
@@ -37,6 +38,33 @@
 
 }
 
+#ourmodal-content {
+	height: 400px;
+	width: 500px;
+	text-align: left;
+	color: black;
+}
+
+#facebook-button {
+	margin-top: 20px;
+	height: 80px;
+	font-family: 'Titillium Web', sans-serif;
+	background-color: #4c66a4;
+	color: white;
+	font-size: 20px;
+	border-radius: 8px;
+	letter-spacing: 3px;
+}
+
+#facebook-button:hover {
+	border: 4px solid #889bc8;
+}
+
+.facebookf-logo {
+	width: 5%;
+	margin-right: 40px;
+}
+
 .modal-title {
 	color: black;
 }
@@ -46,10 +74,9 @@
 }
 
 #map { 
-	height: 600px;
-	margin-top: 100px;
-	margin-bottom: 10px;
-	border-radius: 20px;
+	height: 400px;
+	margin-bottom: 35px; 
+
 
  }
 
@@ -61,6 +88,12 @@
  #city-button {
  	margin-top: 10px;
  	margin-left: 122px;
+ 	font-size: 18px;
+ 	font-family: 'Cabin', sans-serif;
+ }
+
+ #city-button:hover {
+ 	background-color: #ababab;
  }
 
  #address-search {
@@ -99,6 +132,7 @@
 }
 
 .well.the-search-mid {
+	margin-top: 10px;
 	width:100%;
 }
 
@@ -117,6 +151,15 @@
 	margin-right: 50px;
 }
 
+.mymodal.facebook {
+	margin-top: 350px;
+}
+
+.facebook-events {
+	overflow: auto;
+	width: 100%;
+	height:300px;
+}
 /* .insta-map-wrapper {
  	margin-top: 0;
  }*/
@@ -209,11 +252,30 @@
 	margin-left: 120px;
 }
 
+.directions {
+	letter-spacing: 2px;
+}
 
+#edition-text {
+	font-family: 'Yellowtail', cursive;
+	font-size: 85px;
+	color: maroon;
+	font-weight: bold;
+}
 
 #submit {
 	margin-left: 120px;
+	font-size: 18px;
+	color: white;
+	font-family: 'Cabin', sans-serif;
+	letter-spacing: 2px;
 }
+
+#submit:hover {
+	background-color: #0c4864;
+
+}
+
 .hero-hugs {
 	padding-top: 200px;
 	margin-top: 180px;
@@ -282,9 +344,13 @@
 	margin-top: 6px;
 	z-index: 1; 
 	font-family: 'Cabin', sans-serif;
-	background-color: #f5f5f5;
 	opacity: 0.8;
-	border-radius: 20px
+	border-radius: 20px;
+	background-color: #f5f5f5;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
 }
 
 .list-item {
@@ -315,4 +381,22 @@
 
 .streetwords-list {
 	margin-left: -40px;
+}
+
+.bounce {
+  position:fixed;
+  left:50%;
+  bottom:0;
+  margin-top:-25px;
+  margin-left:-40px;
+  height:80px;
+  width:80px;
+  -webkit-animation:bounce 1s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%       { bottom:5px; }
+  25%, 75% { bottom:15px; }
+  50%      { bottom:20px; }
+  100%     {bottom:0;}
 }

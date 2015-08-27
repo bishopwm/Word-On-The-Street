@@ -1,14 +1,12 @@
-<div class="container why-section">
-<h3>Whether you're an expat, a traveller, or just someone curious about the exciting things going on in their neighborhood, don't forget to check out the Word on the Street before your next outing.</h3>
-<hr />
+<link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Cabin:400,600' rel='stylesheet' type='text/css'>
 
-<ul class="logo-list">
-	<li class="logo-list-item"><img src="/assets/square-yelp.png" width="50px"></li>
-	<li class="logo-list-item"><img src="/assets/insta.png" width="70px"></li>
-	<li class="logo-list-item"><img src="/assets/twitter.png" width="50px"></li>
-	<li class="logo-list-item"><img src="/assets/square-meetup.png" width="50px"></li>
-</ul>
-<hr />
+
+</div>
+	<div id="map"></div>
+
+</div>
+
 <div class = "well the-search-mid">
 <form>
   <div class="form-group">
@@ -18,22 +16,43 @@
     <input type="hidden" class="form-control" name="longitude" id="lon">
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
+  <a href="#facebook-div"><img src="/assets/downarrow.png" class="bounce pull-right" visibility="visible"></a>
 </form>
 
-</div>
 
-<div class="well facebook-events">
-		<ul class="fb-events-list"><img src="/assets/facebook.png" width="160px" class="facebook-event-logo"><br /><br />
-			<% @facebook_events.each do |facebook_event| %>
-			<li class="facebook-list-item">
-				<%= facebook_event['name'] %>
-			</li>
-			<li class="facebook-list-item">
-				<%= facebook_event['id'] %>
-			</li><br />
-				<% end %>
-		</ul>
+
 </div>
+<div name="facebook-div"></div>
+<button type="button" class="btn col-lg-12 btn-default" id="facebook-button"><img src="/assets/facebookf.png" class="facebookf-logo">See Facebook Events in the Area</button>
+<div class="ourmodal facebook modal fade" tabindex="-1">
+		  <div class="modal-dialog">
+		    <div class="modal-content" id="ourmodal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
+		        <h3 class="modal-title">Facebook Events</h3>
+		      </div>
+			      <div class="modal-body1"> 
+						<div class="facebook-events">
+								<ul class="fb-events-list"><br /><br />
+									<% @facebook_events.each do |facebook_event| %>
+									<li class="facebook-list-item">
+										<%= facebook_event['name'] %>
+									</li>
+									<li class="facebook-list-item">
+										<%= facebook_event['id'] %>
+									</li><br />
+										<% end %>
+								</ul>
+						</div>
+			    </div>
+
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</div>
+
+
+
 
 
 </div>
@@ -62,9 +81,18 @@
 			<br />			
 			<% end %>
 		<ul>
-	</div>
-		<div id="map"></div>
-	</div>
+<div class="container why-section">
+<h3>Whether you're an expat, a traveller, or just someone curious about the exciting things going on in their neighborhood, don't forget to check out the Word on the Street before your next outing.</h3>
+<hr />
+
+<ul class="logo-list">
+	<li class="logo-list-item"><img src="/assets/square-yelp.png" width="50px"></li>
+	<li class="logo-list-item"><img src="/assets/insta.png" width="70px"></li>
+	<li class="logo-list-item"><img src="/assets/twitter.png" width="50px"></li>
+	<li class="logo-list-item"><img src="/assets/square-meetup.png" width="50px"></li>
+</ul>
+
+
 
 <script type="text/javascript">
 
@@ -72,7 +100,7 @@
 		$('#lat').val(localStorage.getItem('latitude'));
 		$('#lon').val(localStorage.getItem('longitude'));
 		
-		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 14);
+		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 16);
 		var currentLocation = [<%= @latitude %>, <%= @longitude %>];
 
 
@@ -166,14 +194,40 @@
 		<% end %>
 
 
-		function goTo($el) {
-		    $('html, body').animate({
-		        scrollTop: $el.offset().top + 'px'
-		    }, 'slow');
-		    return $el;
-	    }
+		$('#facebook-button').on('click', function(event){
+			event.preventDefault();
+			$('.ourmodal').modal();
+		});
 
-	    goTo($('#map'));
+		$(function() {
+		  $('a[href*=#]:not([href=#])').click(function() {
+		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+		      var target = $(this.hash);
+		      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+		      if (target.length) {
+		        $('html,body').animate({
+		          scrollTop: target.offset().top
+		        }, 1000);
+		        return false;
+		      }
+		    }
+		  });
+		});
+
+		$(function() {
+			$('.bounce').click(function(){
+			    $('.bounce').css('visibility','hidden');
+			});
+		});
+
+		// function goTo($el) {
+		//     $('html, body').animate({
+		//         scrollTop: $el.offset().top + 'px'
+		//     }, 'slow');
+		//     return $el;
+	 //    }
+
+	 //    goTo($('#map'));
 
 	})
 

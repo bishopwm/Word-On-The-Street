@@ -1,10 +1,12 @@
 <link href='https://fonts.googleapis.com/css?family=Cabin:400,600' rel='stylesheet' type='text/css'>
-
+<link href='https://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
 <!-- <div class="whirl"> -->
 
 	<div class="hero-unit">
 			  <p class="hero-text">
 				Word On The Street
+				<p id="edition-text"></p>
+				<h3 class="directions">Enter keyword to search your current neighborhood, or leave blank for all results<h3/>
 			  		<form action="/map" class="main-search-form">
 					  <div class="form-group col-lg-10">
 					    <input type="text" class="form-control" name="q" id="main-search" placeholder="Enter Nationality">
@@ -12,10 +14,11 @@
 					  </div>
 					    <input type="hidden" class="form-control" name="latitude" id="lat">
 					    <input type="hidden" class="form-control" name="longitude" id="lon">
+
 					  <button type="submit" class="btn col-lg-10 main btn-default" id="submit" disabled="disabled">Submit</button>
 					  <button type="button" class="btn col-lg-10 btn-default" id="city-button">Wanna Search A Different City?</button>
 					</form>
-		  	  </p>
+		  	</p>
 	</div>
 
 	<div class="mymodal modal fade" tabindex="-1">
@@ -31,7 +34,7 @@
 						 <!--    <input type="text" class="form-control" name="city" id="city-search" placeholder="Enter City or Zipcode"> -->
 						     <textarea id="txtAddress" rows="3" class="form-control" cols="25"></textarea>
    								 <br />
-    						<input type="button" onclick="GetLocation(); $('#results').append('<h3><strong>Location set to:</strong> ' + $(txtAddress).val() + '</h3>'); var myModal = $('.mymodal');clearTimeout(myModal.data('hideInterval'));myModal.data('hideInterval', setTimeout(function(){myModal.modal('hide');}, 2000));" value="Set Location" class="set-new-location form-control" />
+    						<input type="button" onclick="GetLocation(); $('#results').append('<h3><strong>Location set to:</strong> ' + $(txtAddress).val() + '</h3>'); $('#edition-text').append($(txtAddress).val().toUpperCase() + ' EDITION'); var myModal = $('.mymodal');clearTimeout(myModal.data('hideInterval'));myModal.data('hideInterval', setTimeout(function(){myModal.modal('hide');}, 1000));" value="Set Location" class="set-new-location form-control" />
 
 						   <!-- <button type="submit" class="btn col-sm-10 btn-default" id="city-sub-button">Submit</button> -->
 						</div>
@@ -42,14 +45,14 @@
 		    </div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+		</div>
 	</div>
 
 	<div class="container why-section">
 	<h1> What's the Word on the Street<br />...and why do I care?</h1>
 	<h3>Word on the Street receives a user's geolocation in order to map out all of the 'happenings' in their international community! It's all about accessibility. Get the 'gist' of whatever is going on in your neighborhood or city at a moment's notice: tweets, instagrams, businesses, restaurants, and meetups.</h3>
 	<hr />
-	<p style="font-size: 32px; word-spacing: 40px;">Another World. Your Hood.</p><br />
+	<p style="font-size: 32px; word-spacing: 40px;">Explore the world. From your own neighborhood.</p><br />
 	<ul class="logo-list">
 		<li class="logo-list-item"><img src="/assets/square-yelp.png" width="50px"></li>
 		<li class="logo-list-item"><img src="/assets/square-meetup.png" width="50px"></li>

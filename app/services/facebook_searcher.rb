@@ -14,8 +14,8 @@ class FacebookSearcher
 
 		responses.each do |facebook_event|
 			@facebook_events << {
-				'name' => facebook_event["name"],
-				'id' => facebook_event["id"]
+				'name' => facebook_event["name"]
+				
 			}
 		end
 		
