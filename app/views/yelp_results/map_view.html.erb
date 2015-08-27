@@ -22,42 +22,55 @@
 
 
 </div>
-<div name="facebook-div"></div>
-<button type="button" class="btn col-lg-12 btn-default" id="facebook-button"><img src="/assets/facebookf.png" class="facebookf-logo">See Facebook Events in the Area</button>
-<div class="ourmodal facebook modal fade" tabindex="-1">
-		  <div class="modal-dialog">
-		    <div class="modal-content" id="ourmodal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
-		        <h3 class="modal-title">Facebook Events</h3>
-		      </div>
-			      <div class="modal-body1"> 
-						<div class="facebook-events">
-								<ul class="fb-events-list"><br /><br />
-									<% @facebook_events.each do |facebook_event| %>
-									<li class="facebook-list-item">
-										<%= facebook_event['name'] %>
-									</li>
-									<li class="facebook-list-item">
-										<%= facebook_event['id'] %>
-									</li><br />
-										<% end %>
-								</ul>
-						</div>
-			    </div>
+<div class="socials-container">
+	<div name="facebook-div"></div>
+	<button type="button" class="btn col-lg-12 btn-default" id="facebook-button"><img src="/assets/facebookf.png" class="facebookf-logo">Facebook Events</button>
+	<div class="ourmodal facebook modal fade" tabindex="-1">
+			  <div class="modal-dialog">
+			    <div class="modal-content" id="ourmodal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
+			        <h3 class="modal-title">Facebook Events</h3>
+			      </div>
+				      <div class="modal-body1"> 
+							<div class="facebook-events">
+									<ul class="fb-events-list"><br /><br />
+										<% @facebook_events.each do |facebook_event| %>
+										<li class="facebook-list-item">
+											<%= facebook_event['name'] %>
+										</li>
+										<li class="facebook-list-item">
+											<%= facebook_event['id'] %>
+										</li><br />
+											<% end %>
+									</ul>
+							</div>
+				    </div>
 
-		    </div><!-- /.modal-content -->
-		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+			    </div><!-- /.modal-content -->
+			  </div><!-- /.modal-dialog -->
+			</div><!-- /.modal -->
+		</div>
+
+	<button type="button" class="btn col-lg-12 btn-default" id="twitter-button"><img src="/assets/twitterwhite.png" class="twitter-logo" data-toggle="collapse" data-target="#tweets-target" aria-expanded="false" aria-controls="collapseExample">Recent Tweets</button>
+
+	<div class="tweets" id="tweets-target">
+		<ul class="tweets-list"><br />
+			<% @tweets.each do |tweet_hash| %>
+			<li class="twitter-list-item">
+				<img src="/assets/twitter.png" width="30px">
+				<%= tweet_hash[:tweet] %>
+			</li>
+			<hr />
+			<br />			
+			<% end %>
+		<ul>
 	</div>
 
 
 
-
-
-</div>
-
-	<div class="well insta-bar">
+	<button type="button" class="btn col-lg-12 btn-default" id="instagram-button"><img src="/assets/instagramwhite.png" class="instagram-logo" data-toggle="collapse" data-target="#instagram-target" aria-expanded="false" aria-controls="collapseExample">Nearby Instas</button>
+	<div class="instagrams" id="instagram-target">
 		<ul class="instas-list"><img src="/assets/insta-word.png" width="160px" class="insta-word"><br /><br />
 			<% @instas.each do |insta| %>
 			<li class="insta-list-item">
@@ -70,27 +83,21 @@
 				<% end %>
 		</ul>
 	</div>
-	<div class="well twitter-bar">
-		<ul class="tweets-list"><img src="/assets/twitter-word.png" width="160px" class="twitter-word"><br /><br />
-			<% @tweets.each do |tweet_hash| %>
-			<li class="twitter-list-item">
-				<img src="/assets/twitter.png" width="30px">
-				<%= tweet_hash[:tweet] %>
-			</li>
-			<hr />
-			<br />			
-			<% end %>
-		<ul>
-<div class="container why-section">
-<h3>Whether you're an expat, a traveller, or just someone curious about the exciting things going on in their neighborhood, don't forget to check out the Word on the Street before your next outing.</h3>
-<hr />
+</div>
 
-<ul class="logo-list">
-	<li class="logo-list-item"><img src="/assets/square-yelp.png" width="50px"></li>
-	<li class="logo-list-item"><img src="/assets/insta.png" width="70px"></li>
-	<li class="logo-list-item"><img src="/assets/twitter.png" width="50px"></li>
-	<li class="logo-list-item"><img src="/assets/square-meetup.png" width="50px"></li>
-</ul>
+
+
+<!-- <div class="container why-footnote">
+	<h3>Whether you're an expat, a traveller, or just someone curious about the exciting things going on in their neighborhood, don't forget to check out the Word on the Street before your next outing.</h3>
+	<hr />
+
+	<ul class="logo-list">
+		<li class="logo-list-item"><img src="/assets/square-yelp.png" width="50px"></li>
+		<li class="logo-list-item"><img src="/assets/insta.png" width="70px"></li>
+		<li class="logo-list-item"><img src="/assets/twitter.png" width="50px"></li>
+		<li class="logo-list-item"><img src="/assets/square-meetup.png" width="50px"></li>
+	</ul>
+</div> -->
 
 
 
@@ -100,7 +107,7 @@
 		$('#lat').val(localStorage.getItem('latitude'));
 		$('#lon').val(localStorage.getItem('longitude'));
 		
-		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 16);
+		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 14);
 		var currentLocation = [<%= @latitude %>, <%= @longitude %>];
 
 

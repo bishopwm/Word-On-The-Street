@@ -61,7 +61,39 @@
 }
 
 .facebookf-logo {
-	width: 5%;
+	width: 4%;
+	margin-right: 40px;
+}
+
+#twitter-button {
+	margin-top: 20px;
+	height: 80px;
+	/*font-family: 'Titillium Web', sans-serif;*/
+	background-color: #55acee;
+	color: white;
+	font-size: 20px;
+	border-radius: 8px;
+	letter-spacing: 3px;
+}
+
+.twitter-logo {
+	width: 3%;
+	margin-right: 40px;
+}
+
+#instagram-button {
+	margin-top: 20px;
+	height: 80px;
+	/*font-family: 'Titillium Web', sans-serif;*/
+	background-color: #bea9a2;
+	color: white;
+	font-size: 20px;
+	border-radius: 8px;
+	letter-spacing: 3px;
+}
+
+.instagram-logo {
+	width: 6%;
 	margin-right: 40px;
 }
 
@@ -139,6 +171,12 @@
 .why-section {
 	text-align: center;
 	/*color: white;*/
+	font-family: 'Cabin', sans-serif;
+}
+
+.why-footnote {
+	margin-top: 200px;
+	text-align: center;
 	font-family: 'Cabin', sans-serif;
 }
 
@@ -259,7 +297,7 @@
 #edition-text {
 	font-family: 'Yellowtail', cursive;
 	font-size: 85px;
-	color: maroon;
+	color: rgba(234, 159, 159, 1);
 	font-weight: bold;
 }
 
