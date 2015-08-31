@@ -11,7 +11,7 @@
 <div class="container_nav">
 	<nav class="nav navbar">
 		      <ul class="nav-bar">
-		        <li class="list-item"><a href="#" onClick="location.reload(true);"><%= link_to "Home", '/' %></a></li>
+		        <li class="list-item"><a href="#" onClick="window.location.reload(true);"><%= link_to "Home", '/' %></a></li>
 		        <% if current_user %>
 		        <li class="list-item"><a href="#"><%= link_to "My Community", streetwords_path %></a></li>
 		        <% end %>
