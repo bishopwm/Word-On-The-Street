@@ -27,6 +27,8 @@ $(function () {
 
 	function onError(error) {
 	  console.log("Getting location failed: " + error);
+	  alert("Word on the Street failed to get your current location. Click 'OK' to reload the browser.")
+	  location.reload(true);
 	};
 
 
@@ -35,6 +37,8 @@ $(function () {
 	  document.getElementById('lat').value = window.localStorage.getItem("latitude");
 	  document.getElementById('lon').value = window.localStorage.getItem("longitude");
 	  $('#submit').removeAttr('disabled');
+	  $('#submit').empty();
+	  $('#submit').append('<h4>Submit Search</h4>');
 	};
 
 });

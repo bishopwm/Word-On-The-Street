@@ -4,7 +4,7 @@
 
 	<div class="hero-unit">
 			  <p class="hero-text">
-				Word On The Street
+				The Word On The Street
 				<p id="edition-text"></p>
 				<h3 class="directions">Enter keyword to search your current neighborhood, or leave blank for all results<h3/>
 			  		<form action="/map" class="main-search-form">
@@ -15,8 +15,8 @@
 					    <input type="hidden" class="form-control" name="latitude" id="lat">
 					    <input type="hidden" class="form-control" name="longitude" id="lon">
 
-					  <button type="submit" class="btn col-lg-10 main btn-default" id="submit" disabled="disabled">Submit</button>
-					  <button type="button" class="btn col-lg-10 btn-default" id="city-button">Wanna Search A Different City?</button>
+					  <button type="submit" class="btn col-lg-10 main btn-default" id="submit" disabled="disabled"></button>
+					  <button type="button" class="btn col-lg-10 btn-default" id="city-button">Search Alternative City</button>
 					</form>
 		  	</p>
 	</div>
@@ -26,7 +26,7 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
-		        <h3 class="modal-title">Set New Location</h3>
+		        <h3 class="modal-title">Enter City Name or Zipcode</h3>
 		      </div>
 		      <div class="modal-body1">  
 		        	<!-- <form class="city-form"> -->
@@ -34,7 +34,7 @@
 						 <!--    <input type="text" class="form-control" name="city" id="city-search" placeholder="Enter City or Zipcode"> -->
 						     <textarea id="txtAddress" rows="3" class="form-control" cols="25"></textarea>
    								 <br />
-    						<input type="button" onclick="GetLocation(); $('#results').append('<h3><strong>Location set to:</strong> ' + $(txtAddress).val() + '</h3>'); $('#edition-text').append($(txtAddress).val().toUpperCase() + ' EDITION'); var myModal = $('.mymodal');clearTimeout(myModal.data('hideInterval'));myModal.data('hideInterval', setTimeout(function(){myModal.modal('hide');}, 1000));" value="Set Location" class="set-new-location form-control" />
+    						<input type="button" onclick="GetLocation(); $('#results').append('<h3><strong>Location set to:</strong> ' + $(txtAddress).val() + '</h3>'); $('#edition-text').append($(txtAddress).val().toUpperCase()); var myModal = $('.mymodal');clearTimeout(myModal.data('hideInterval'));myModal.data('hideInterval', setTimeout(function(){myModal.modal('hide');}, 1000));" value="Set Location" class="set-new-location form-control" />
 
 						   <!-- <button type="submit" class="btn col-sm-10 btn-default" id="city-sub-button">Submit</button> -->
 						</div>
@@ -71,6 +71,13 @@ $(function () {
 	  alert("Geolocation is not available")
 	};
 });
+
+if($('#submit').attr('disabled') == 'disabled'){
+    $('#submit').append('<h4>Getting Current Location...</h4>');
+}else{
+    $('#submit').append('<h4>Submit</h4>');
+}
+
 
 $('#city-button').on('click', function(event){
 	event.preventDefault();

@@ -71,7 +71,7 @@
 
 	<button type="button" class="btn col-lg-12 btn-default" id="instagram-button"><img src="/assets/instagramwhite.png" class="instagram-logo" data-toggle="collapse" data-target="#instagram-target" aria-expanded="false" aria-controls="collapseExample">Nearby Instas</button>
 	<div class="instagrams" id="instagram-target">
-		<ul class="instas-list"><img src="/assets/insta-word.png" width="160px" class="insta-word"><br /><br />
+		<ul class="instas-list"><br />
 			<% @instas.each do |insta| %>
 			<li class="insta-list-item">
 				<img src="<%= insta['image']['url'] %>" class="insta-pic">
