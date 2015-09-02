@@ -27,8 +27,8 @@ $(function () {
 
 	function onError(error) {
 	  console.log("Getting location failed: " + error);
-	  alert("Word on the Street failed to get your current location. Click 'OK' to reload the browser.")
-	  location.reload(true);
+	  alert("Word on the Street failed to get your current location. Please ensure your location settings are turned to 'ON' and refresh your browser.")
+	  // location.reload(true);
 	};
 
 

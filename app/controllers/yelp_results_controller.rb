@@ -38,8 +38,8 @@ class YelpResultsController < ApplicationController
 
   # FACBOOK
     new_search_facebook = FacebookSearcher.new
-    @facebook_events = new_search_facebook.get_facebook_results(user_city, parameters)
-
+    
+      @facebook_events = new_search_facebook.get_facebook_results(user_city, parameters)
 
     render :map_view
 

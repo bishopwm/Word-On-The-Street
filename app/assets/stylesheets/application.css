@@ -22,6 +22,11 @@
 
 }
 
+.progress-bar.animate {
+   width: 100%;
+}
+
+
 .avatar {
 	width: 10%;
 	border-radius: 8px;
