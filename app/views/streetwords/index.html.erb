@@ -1,7 +1,13 @@
 <link href='https://fonts.googleapis.com/css?family=Cabin:400,600' rel='stylesheet' type='text/css'>
 
 <div class="well my_profile">
-	<h2>Hey, <%= current_user[:name] %>!</h2>
+	<% if  current_user[:name].nil? %>
+		<h2>Hey, there! Welcome Back.</h2>
+	<% else %>
+		<h2>Hey, 
+			<%= current_user[:name] %>!
+		</h2>
+	<% end %>
 	<p>
 		<%= current_user[:email] %>
 	</p>
@@ -11,7 +17,8 @@
 <div class="well my_community_well">
 <div class="container my_comm">
 <h2>My Community</h2>
-	<ul class="streetwords-list">
+	<%= link_to 'Back to Results', url_for(:back) %>
+	<ul class="streetwords-list" style="margin-top: 15px;">
 		<% @streetwords.each do |streetword| %>
 			<li class="streetwords-list-item"><strong>Name: </strong>
 				<%= streetword.name %>
@@ -36,7 +43,7 @@
 <div id="map"></div>
 
 <style>
-	#map { height: 600px; }
+	#map { height: 600px; width: 90%; margin: 0 auto;}
 	.streetwords-list-item { 
 		display: inline;
 		list-style-type: none;

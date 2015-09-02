@@ -113,7 +113,7 @@
 		$('#lat').val(localStorage.getItem('latitude'));
 		$('#lon').val(localStorage.getItem('longitude'));
 		
-		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 14);
+		var map = L.map('map').setView([<%= @latitude %>, <%= @longitude %>], 16);
 		var currentLocation = [<%= @latitude %>, <%= @longitude %>];
 
 
@@ -126,9 +126,15 @@
 
 		map.scrollWheelZoom.disable();
 
+		// var markers = []
+
 		var markersYelp = {}
+		// markers.push(markersYelp);
 		var markersMeetup = {}
+		// markers.push(markersMeetup);
 		var markersInsta = {}
+		// markers.push(markersInsta);
+
 
 		var currentLocationIcon = L.icon({
 		    iconUrl: '/assets/star.png',
