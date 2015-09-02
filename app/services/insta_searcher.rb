@@ -14,7 +14,7 @@ class InstaSearcher
 	  content_request = HTTParty.get("https://api.instagram.com/v1/media/search?lat=#{latitude}&lng=#{longitude}&access_token=#{access_token}&tag=#{tag}")
 	  							  
 		content_request['data'].each do |insta_info|
-
+			# next if insta_info['location']['name'].nil?
 		  @insta_contents << {
 		  	'image' => insta_info['images']['standard_resolution'],
 		  	'hashtag' => insta_info['tags'],

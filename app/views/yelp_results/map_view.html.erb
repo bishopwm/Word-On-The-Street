@@ -10,7 +10,7 @@
 <div class = "well the-search-mid">
 <form>
   <div class="form-group">
-    <label for="new-search">New Search</label>
+    <label for="new-search">Search My Current Location</label>
     <input type="text" class="form-control" name="q" id="new-search" placeholder="Enter Nationality">
     <input type="hidden" class="form-control" name="latitude" id="lat">
     <input type="hidden" class="form-control" name="longitude" id="lon">
@@ -47,58 +47,64 @@
 							</div>
 				    </div>
 
-			    </div><!-- /.modal-content -->
-			  </div><!-- /.modal-dialog -->
-			</div><!-- /.modal -->
+			    </div>
+			  </div>
+			</div>
 		</div>
 
 	<button type="button" class="btn col-lg-12 btn-default" id="twitter-button"><img src="/assets/twitterwhite.png" class="twitter-logo" data-toggle="collapse" data-target="#tweets-target" aria-expanded="false" aria-controls="collapseExample">Recent Tweets</button>
+	<div class="twittermodal twitter modal fade" tabindex="-1">
+			  <div class="modal-dialog">
+			    <div class="modal-content" id="twittermodal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
+			        <h3 class="modal-title">Tweets</h3>
+			      </div>
+				      <div class="modal-body1"> 
+						<div class="tweets" id="tweets-target">
+							<ul class="tweets-list"><br />
+								<% @tweets.each do |tweet_hash| %>
+								<li class="twitter-list-item">
+									<img src="/assets/twitter.png" width="30px">
+									<%= tweet_hash[:tweet] %>
+								</li>
+								<hr />
+								<br />			
+								<% end %>
+							<ul>
+						</div>
+				    </div>
+			    </div>
+			  </div>
+			</div>
+		</div>
 
-	<div class="tweets" id="tweets-target">
-		<ul class="tweets-list"><br />
-			<% @tweets.each do |tweet_hash| %>
-			<li class="twitter-list-item">
-				<img src="/assets/twitter.png" width="30px">
-				<%= tweet_hash[:tweet] %>
-			</li>
-			<hr />
-			<br />			
-			<% end %>
-		<ul>
-	</div>
 
 
 
 	<button type="button" class="btn col-lg-12 btn-default" id="instagram-button"><img src="/assets/instagramwhite.png" class="instagram-logo" data-toggle="collapse" data-target="#instagram-target" aria-expanded="false" aria-controls="collapseExample">Nearby Instas</button>
-	<div class="instagrams" id="instagram-target">
-		<ul class="instas-list"><br />
+
+	<div class="container">
+		<ul class="row insta-gallery-list">
 			<% @instas.each do |insta| %>
-			<li class="insta-list-item">
+			<li li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 insta-gallery-list-item">
 				<img src="<%= insta['image']['url'] %>" class="insta-pic">
 			</li>
-			<li class="insta-list-item">
-				<%= insta['location_name'] %>
-			</li><br />
-			
 				<% end %>
 		</ul>
 	</div>
+
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" id="insta-content">
+          <div class="modal-body">
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 </div>
-
-
-
-<!-- <div class="container why-footnote">
-	<h3>Whether you're an expat, a traveller, or just someone curious about the exciting things going on in their neighborhood, don't forget to check out the Word on the Street before your next outing.</h3>
-	<hr />
-
-	<ul class="logo-list">
-		<li class="logo-list-item"><img src="/assets/square-yelp.png" width="50px"></li>
-		<li class="logo-list-item"><img src="/assets/insta.png" width="70px"></li>
-		<li class="logo-list-item"><img src="/assets/twitter.png" width="50px"></li>
-		<li class="logo-list-item"><img src="/assets/square-meetup.png" width="50px"></li>
-	</ul>
-</div> -->
-
 
 
 <script type="text/javascript">
@@ -205,6 +211,10 @@
 			event.preventDefault();
 			$('.ourmodal').modal();
 		});
+		$('#twitter-button').on('click', function(event){
+			event.preventDefault();
+			$('.twittermodal').modal();
+		});
 
 		$(function() {
 		  $('a[href*=#]:not([href=#])').click(function() {
@@ -227,15 +237,20 @@
 			});
 		});
 
-		// function goTo($el) {
-		//     $('html, body').animate({
-		//         scrollTop: $el.offset().top + 'px'
-		//     }, 'slow');
-		//     return $el;
-	 //    }
+		$(document).ready(function(){
+		           $('.insta-gallery-list-item .insta-pic').on('click',function(){
+		                var src = $(this).attr('src');
+		                var img = '<img src="' + src + '" class="img-responsive"/>';
+		                $('#myModal').modal();
+		                $('#myModal').on('shown.bs.modal', function(){
+		                    $('#myModal .modal-body').html(img);
+		                });
+		                $('#myModal').on('hidden.bs.modal', function(){
+		                    $('#myModal .modal-body').html('');
+		                });
+		           });
+		        })
 
-	 //    goTo($('#map'));
-
-	})
+			})
 
 </script>

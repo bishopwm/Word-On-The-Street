@@ -48,6 +48,7 @@
 #facebook-button {
 	margin-top: 20px;
 	height: 80px;
+	width: 100%;
 	font-family: 'Titillium Web', sans-serif;
 	background-color: #4c66a4;
 	color: white;
@@ -68,7 +69,7 @@
 #twitter-button {
 	margin-top: 20px;
 	height: 80px;
-	/*font-family: 'Titillium Web', sans-serif;*/
+	width: 100%;
 	background-color: #55acee;
 	color: white;
 	font-size: 20px;
@@ -77,12 +78,13 @@
 }
 
 .twitter-logo {
-	width: 3%;
-	margin-right: 40px;
+	width: 2.5%;
+	margin-right: 60px;
 }
 
 #instagram-button {
 	margin-top: 20px;
+	width: 100%;
 	height: 80px;
 	/*font-family: 'Titillium Web', sans-serif;*/
 	background-color: #bea9a2;
@@ -101,6 +103,11 @@
 	color: black;
 }
 
+#ourmodal-content {
+	color: #4c66a4;
+	font-weight: bold;
+}
+
 .modal-city-info {
 	margin-top: 80px;
 }
@@ -112,16 +119,38 @@
 
  }
 
- #main-search {
- 	margin-left: 120px;
+ .homepage-blurb {
+ 	font-size: 32px; 
+ 	word-spacing: 10px;
+ 	color: #116890;
+
+ }
+
+ .blurb-span {
+ 	font-size: 32px;
+ 	word-spacing: 10px;
+ 	color: #09384e;
+ 	font-weight: bold;
+ }
+
+ #main-search .main-search-form .form-group{
+/* 	margin-left: 120px;*/
+	height: 40px;
+	width: 100%;
+	margin: 10px auto;
  }
 
 
  #city-button {
- 	margin-top: 10px;
- 	margin-left: 122px;
- 	font-size: 18px;
+
+	width: 100%;
+	margin: 10px auto;
+/* 	margin-left: 122px;
+*/ 	font-size: 18px;
+ 	height: 54px;
  	font-family: 'Cabin', sans-serif;
+	color: #116890;
+	letter-spacing: 2px;
  }
 
  #city-button:hover {
@@ -145,23 +174,6 @@
 	list-style-type: none;
 }
 
-.tweet-header {
-	margin-left: 300px;
-}
-
-.tweets-list {
-	margin-top: 5px;
-	height: 550px;
-	overflow-y: scroll;
-	/*overflow-x: hidden;*/
-
-}
-
-.tweet-well {
-	width: 50px;
-	background-color: white;
-
-}
 
 .well.the-search-mid {
 	margin-top: 10px;
@@ -172,6 +184,12 @@
 	text-align: center;
 	/*color: white;*/
 	font-family: 'Cabin', sans-serif;
+ 	color: #116890;
+
+}
+
+.what-is-it-blurb {
+	color: black;
 }
 
 .why-footnote {
@@ -193,66 +211,63 @@
 	margin-top: 350px;
 }
 
+.mymodal.twitter {
+	margin-top: 350px;
+
+}
+
+#twittermodal-content {
+	height: 100%;
+	color: #55acee;
+	font-weight: bold;
+}
+
+#insta-content {
+	height: 100%;
+	margin-top: 50px;
+}
+
+.tweets-list {
+	overflow: auto;
+	width: 100%;
+	height: 300px;
+}
 .facebook-events {
 	overflow: auto;
 	width: 100%;
 	height:300px;
 }
-/* .insta-map-wrapper {
- 	margin-top: 0;
- }*/
+
 
 .insta-pic {
-	width: 90%;
+	width: 95%;
 	border-radius: 5px;
 }
 
-.instas-list {
-	margin-top: 5px;
-	height: 560px;
-	overflow: auto;
+
+.insta-gallery-list {
+	padding: 0 0 0 0;
+	margin: 15px 0 0 0;
 }
 
-.insta-list-item {
+.insta-gallery-list-item {
 	list-style-type: none;
-	font-size: 12px;
+	margin-bottom: 25px;
+
 }
 
-.insta-bar {
-	margin-top: 100px;
-	height: 600px;
-	width: 250px;
-	float: right;
-	margin-left: 20px;
-	margin-right: 20px;
+.insta-gallery-list-item .insta-pic {
+	cursor: pointer;
 }
 
 
-.twitter-bar {
-	margin-top: 100px;
-	height: 600px;
-	width: 250px;
-	float: left;
-	margin-left: 20px;
-	margin-right: 20px;
-}
 
-.well.insta-bar {
-	border-radius: 6px;
-}
-
-.well.twitter-bar {
-	border-radius: 6px;
-}
 
 .twitter-list-item {
 	list-style-type: none;
-	width: 100px;
+	width: 100%;
 	font-size: 12px;
-}
-
-.tweet-well {
-	width: 250px;
+	text-align: left;
 }
 
 
@@ -281,13 +296,16 @@
 
 .hero-text {
 	margin-top: 200px;
-	margin-left: 20px;
+	/*margin-left: 20px;*/
 	font-size: 100px;
 	text-align: center;
 }
 
 #the-search-mid {
-	margin-left: 120px;
+	/*margin-left: 120px;*/
+	height: 54px;
+	width: 1200px;
+	margin: 10px auto;
 }
 
 .directions {
@@ -302,7 +320,8 @@
 }
 
 #submit {
-	margin-left: 120px;
+	/*margin-left: 120px;*/
+	width: 100%;
 	font-size: 18px;
 	color: white;
 	font-family: 'Cabin', sans-serif;

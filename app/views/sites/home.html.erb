@@ -8,7 +8,7 @@
 				<p id="edition-text"></p>
 				<h3 class="directions">Enter keyword to search your current neighborhood, or leave blank for all results<h3/>
 			  		<form action="/map" class="main-search-form">
-					  <div class="form-group col-lg-10">
+					  <div class="form-group col-lg-12">
 					    <input type="text" class="form-control" name="q" id="main-search" placeholder="Enter Nationality">
 					   <!--  <input type="string" class="form-control" name="add" id="address-search" placeholder="Enter City or Address"> -->
 					  </div>
@@ -16,7 +16,7 @@
 					    <input type="hidden" class="form-control" name="longitude" id="lon">
 
 					  <button type="submit" class="btn col-lg-10 main btn-default" id="submit" disabled="disabled"></button>
-					  <button type="button" class="btn col-lg-10 btn-default" id="city-button">Search Alternative City</button>
+					  <button type="button" class="btn col-lg-10 btn-default" id="city-button" style="font-weight: bold;">Search Alternative City</button>
 					</form>
 		  	</p>
 	</div>
@@ -50,9 +50,9 @@
 
 	<div class="container why-section">
 	<h1> What's the Word on the Street<br />...and why do I care?</h1>
-	<h3>Word on the Street receives a user's geolocation in order to map out all of the 'happenings' in their international community! It's all about accessibility. Get the 'gist' of whatever is going on in your neighborhood or city at a moment's notice: tweets, instagrams, businesses, restaurants, and meetups.</h3>
+	<h3 class="what-is-it-blurb">Word on the Street receives a user's geolocation in order to map out all of the 'happenings' in their international community! It's all about accessibility. Get the 'gist' of whatever is going on in your neighborhood or city at a moment's notice: Tweets, Instagrams, Meetups, Facebook Events, local businesses and restaurants.</h3>
 	<hr />
-	<p style="font-size: 32px; word-spacing: 40px;">Explore the world. From your own neighborhood.</p><br />
+	<p class="homepage-blurb">The <span class="blurb-span">world</span> in your <span class="blurb-span">neighborhood.</span></p><br />
 	<ul class="logo-list">
 		<li class="logo-list-item"><img src="/assets/square-yelp.png" width="50px"></li>
 		<li class="logo-list-item"><img src="/assets/square-meetup.png" width="50px"></li>
@@ -73,7 +73,7 @@ $(function () {
 });
 
 if($('#submit').attr('disabled') == 'disabled'){
-    $('#submit').append('<h4>Getting Current Location...</h4>');
+    $('#submit').append('<h4>Retrieving Current Location...</h4>');
 }else{
     $('#submit').append('<h4>Submit</h4>');
 }
