@@ -1,0 +1,50 @@
+	<div name="facebook-div"></div>
+<% if current_user %>
+		<button type="button" class="btn col-lg-12 btn-default" id="facebook-button"><img src="/assets/facebookf.png" class="facebookf-logo">Facebook Events</button>
+		<div class="ourmodal facebook modal fade" tabindex="-1">
+				  <div class="modal-dialog">
+				    <div class="modal-content" id="ourmodal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
+				        <h3 class="modal-title">Facebook Events</h3>
+				      </div>
+					      <div class="modal-body1"> 
+								<div class="facebook-events">
+										<ul class="fb-events-list"><br /><br />
+											<% @facebook_events.each do |facebook_event| %>
+											<li class="facebook-list-item">
+												<%= facebook_event['name'] %>
+											</li>
+											<li class="facebook-list-item">
+												<%= facebook_event['id'] %>
+											</li><br />
+										<% end %>
+										</ul>
+								</div>
+					    </div>
+
+				    </div>
+				  </div>
+				</div>
+			</div>
+<% else %>
+		<button type="button" class="btn col-lg-12 btn-default" id="facebook-button"><img src="/assets/facebookf.png" class="facebookf-logo">Facebook Events</button>
+		<div class="ourmodal facebook modal fade" tabindex="-1">
+				  <div class="modal-dialog">
+				    <div class="modal-content" id="ourmodal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
+				        <h3 class="modal-title">Facebook Events</h3>
+				      </div>
+					      <div class="modal-body1"> 
+								<div class="facebook-events" style="text-align: center; margin-top: 30px;">
+										<br />
+										<%= link_to "Sign-in with Facebook", new_user_session_path, style: "font-size: 24px;" %>
+								</div>
+					    </div>
+
+				    </div>
+				  </div>
+				</div>
+			</div>
+<% end %>
